@@ -45,6 +45,7 @@ ${VE_DIR}: venv/%:
 #=> develop: install package in develop mode
 .PHONY: develop install
 develop:
+	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
 	pip install -e .[dev]
 install:
 	pip install .
