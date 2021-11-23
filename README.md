@@ -24,4 +24,7 @@ Code reformatting:
 
 Test:
 
-    pytest
+    pytest   # for current environment
+	tox      # for Python 3.9 and Python 3.10
+	
+
