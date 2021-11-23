@@ -11,8 +11,9 @@ Please implement the following functionality using GitHub Actions:
 
 * Test the repo on every commit using tox.
 * When tagged in git (e.g., 0.1.0), package the repo and push to
-  test.pypi.org.  [Read
-  this](https://packaging.python.org/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/).
+  test.pypi.org.  [This
+  doc](https://packaging.python.org/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/)
+  will help.
 * Check code format (`black --check`, `isort --check-only`); fail
   commit if not formatted correctly.
 
@@ -44,3 +45,15 @@ Test:
 
     pytest   # for current environment
 	tox      # for Python 3.9 and Python 3.10
+
+Run it:
+
+    snafu$ python3 -m marvinquote
+    Marvin says:
+    There's only one life-form as intelligent as me within thirty parsecs...
+           
+    snafu$ marvin-quote 
+    Marvin says:
+    You think you've got problems? What are you supposed to do if you...
+       
+
