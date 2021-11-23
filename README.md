@@ -44,7 +44,14 @@ Code reformatting:
 Test:
 
     pytest   # for current environment
-	tox      # for Python 3.9 and Python 3.10
+    tox      # for Python 3.9 and Python 3.10
+
+Build:
+
+    git tag 0.0.4
+    pip install build
+    python -m build
+    ls -l dist
 
 Run it:
 
