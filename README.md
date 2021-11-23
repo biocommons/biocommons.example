@@ -28,18 +28,19 @@ PRs that provide other improvements are also welcome.
 
 Setup like this:
 
+	make devready
+    source venv/bin/activate
+	
+No make? Do this instead:
+
     python3 -m venv venv
     source venv/bin/activate
     pip install -U pip setuptools
-
-Install in development mode:
-
-    pip install -e .[dev]
+	pip install -e .[dev]
 
 Code reformatting:
 
-    black src tests
-	isort src tests
+	make reformat
 
 Test:
 
