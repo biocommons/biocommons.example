@@ -13,7 +13,6 @@ def main():
         fmt="%(asctime)s [%(process)d] %(name)s:%(lineno)d %(levelname)s %(message)s",
         datefmt="%FT%T.%f%z")
 
-
     quote = marvin.get_quote()
     _logger.warning(f"Got quote from Marvin (len={len(quote)})")
 
