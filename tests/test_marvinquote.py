@@ -6,4 +6,4 @@ def test_version():
 
 
 def test_get_quote():
-    assert get_quote is not None
+    assert get_quote() is not None
