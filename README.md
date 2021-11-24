@@ -49,7 +49,8 @@ Try it:
 ## Code structure and features
 * Modern pyproject.toml with setuptools, versioning based on git tag (only)
 * Easy development setup
-* Complete testing setup: pytest, doctesting, tox
+* Complete testing setup: pytest, doctesting, tox; tests with adjacent
+  tests and intgeration tests
 * Examples for logging, namespaces, package data
 * Command-line with argument parsing with argparse
 
