@@ -12,6 +12,17 @@ quotes_stream = importlib.resources.open_text(__package__, "quotes.yaml")
 quotes = yaml.load(quotes_stream, Loader=yaml.SafeLoader)["quotes"]
 
 
+def is_alive() -> bool:
+    """tests whether Marvin is alive
+
+    >>> is_alive() is True
+    True
+
+    """
+
+    return True
+
+
 def get_quote() -> str:
     """return random Marvin quote"""
 
