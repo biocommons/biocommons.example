@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
-addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=marvinquote"
+addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=biocommons.example"
 doctest_optionflags = [
     "ALLOW_BYTES",
     "ALLOW_UNICODE",
@@ -18,12 +18,15 @@ doctest_optionflags = [
 ]
 markers = [
     "network",
+    "slow",
+    "smoketest",
 ]
 
 
 [tool.coverage.run]
 branch = true
-source = ["marvinquote"]
+source = ["biocommons.example"]
+
 
 [tool.coverage.report]
 show_missing = true

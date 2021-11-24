@@ -1,8 +1,7 @@
-# Marvin Quote Test Package
+# biocommons.example Test Package
 
 This repo contains source for a simple package to reevaluate choices
-for Python packaging.  It's also good fodder for a technical
-challenge.
+for Python packaging.
 
 
 
@@ -29,7 +28,7 @@ Build:
 
 Try it:
 
-    $ python3 -m marvinquote
+    $ python3 -m biocommons.example
     Marvin says:
     There's only one life-form as intelligent as me within thirty parsecs...
            
@@ -38,7 +37,7 @@ Try it:
     You think you've got problems? What are you supposed to do if you...
 	
 	$ ipython
-	>>> from marvinquote import __version__, get_quote
+	>>> from biocommons.example import __version__, get_quote_from_marvin
 	>>> __version__
 	'0.1.dev8+gd5519a8.d20211123'
 	>>> get_quote()

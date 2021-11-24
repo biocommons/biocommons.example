@@ -8,4 +8,4 @@ except PackageNotFoundError:   # pragma: no cover
     pass
 
 
-from .marvin import get_quote
+from .marvin import get_quote as get_quote_from_marvin
