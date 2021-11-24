@@ -1,5 +1,9 @@
 [build-system]
-requires = ["setuptools >= 59.2.0", "setuptools_scm >= 6.2", "wheel >= 0.37.0"]
+requires = [
+	 "setuptools >= 59.2.0",
+	 "setuptools_scm >= 6.2",
+	 "wheel >= 0.37.0"
+	 ]
 build-backend = "setuptools.build_meta"
 
 
@@ -8,7 +12,7 @@ build-backend = "setuptools.build_meta"
 
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
-addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=biocommons.example"
+addopts = "-s -x --strict-markers -m 'not extra' --doctest-modules --cov=biocommons.example"
 doctest_optionflags = [
     "ALLOW_BYTES",
     "ALLOW_UNICODE",
@@ -17,9 +21,8 @@ doctest_optionflags = [
     "NORMALIZE_WHITESPACE",
 ]
 markers = [
-    "network",
-    "slow",
-    "smoketest",
+	"network: tests that require network connectivity",
+	"slow: slow tests that should be run infrequently",
 ]
 
 
@@ -27,6 +30,7 @@ markers = [
 branch = true
 source = ["biocommons.example"]
 omit = ["*_test.py", "*/test/*"]
+
 
 [tool.coverage.report]
 show_missing = true
