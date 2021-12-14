@@ -4,7 +4,6 @@ import random
 
 import yaml
 
-
 _logger = logging.getLogger(__name__)
 
 
@@ -25,10 +24,10 @@ def is_alive() -> bool:
 
 def get_quote() -> str:
     """return random Marvin quote
-    
+
     eg> get_quote()
     "There's only one life-form as intelligent..."
- 
+
     """
 
     _logger.info("Getting quote from Marvin")

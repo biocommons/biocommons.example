@@ -8,10 +8,13 @@ _logger = logging.getLogger(__name__)
 
 def main():
     import coloredlogs
+
     logging.Formatter.converter = time.gmtime
-    coloredlogs.install(level="INFO",
+    coloredlogs.install(
+        level="INFO",
         fmt="%(asctime)s [%(process)d] %(name)s:%(lineno)d %(levelname)s %(message)s",
-        datefmt="%FT%T.%f%z")
+        datefmt="%FT%T.%f%z",
+    )
 
     quote = marvin.get_quote()
     _logger.warning(f"Got quote from Marvin (len={len(quote)})")
