@@ -1,4 +1,4 @@
-"""myome.example.__main__
+"""biocommons.example.__main__
 
 """
 

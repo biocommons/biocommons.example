@@ -1,4 +1,4 @@
-"""myome.example test, adjacent to code
+"""biocommons.example test, adjacent to code
 """
 
 from .marvin import get_quote

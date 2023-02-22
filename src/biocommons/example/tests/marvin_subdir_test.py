@@ -1,4 +1,4 @@
-"""myome.example test, within tests directory adjacent to source
+"""biocommons.example test, within tests directory adjacent to source
 """
 
 from ..marvin import get_quote

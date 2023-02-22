@@ -1,4 +1,4 @@
-"""myome example package"""
+"""biocommons.example package"""
 
 from importlib.metadata import PackageNotFoundError, version
 
