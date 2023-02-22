@@ -1,8 +1,31 @@
+[project]
+name = "biocommons.example"
+authors = [
+  { name="Bob the Builder", email="bob@nowhere.com" },
+]
+description = "Example Package"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/biocommons/example"
+"Bug Tracker" = "https://github.com/biocommons/exmaple/issues"
+
+
 [build-system]
 requires = [
-	 "setuptools >= 59.2.0",
-	 "setuptools_scm >= 6.2",
-	 "wheel >= 0.37.0"
+	 "setuptools >= 65.3",
+   	 "setuptools_scm[toml] ~= 7.0"
 	 ]
 build-backend = "setuptools.build_meta"
 
@@ -12,7 +35,7 @@ build-backend = "setuptools.build_meta"
 
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
-addopts = "-s -x --strict-markers -m 'not extra' --doctest-modules --cov=biocommons.example"
+addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
 doctest_optionflags = [
     "ALLOW_BYTES",
     "ALLOW_UNICODE",
@@ -29,7 +52,7 @@ markers = [
 [tool.coverage.run]
 branch = true
 source = ["biocommons.example"]
-omit = ["*_test.py", "*/test/*"]
+omit = ["*_test.py", "*/tests/*"]
 
 
 [tool.coverage.report]
@@ -49,3 +72,19 @@ exclude_lines = [
     # Don't complain if non-runnable code isn't run:
     "if __name__ == .__main__.:",
 ]
+
+[tool.black]
+line-length = 120
+
+
+# [tool.flake8]
+# flake8 does not support configuration in pyproject.toml
+# https://github.com/PyCQA/flake8/issues/234#issuecomment-812800832
+# The config in setup.cfg
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = "R0913"
+
+
+[tool.pylint.format]
+max-line-length = "120"

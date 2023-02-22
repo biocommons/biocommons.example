@@ -1,3 +1,9 @@
+"""random quotes from Marvin the depressed robot
+
+The secret is to bang the rocks together.
+
+"""
+
 import importlib.resources
 import logging
 import random
@@ -34,6 +40,6 @@ def get_quote() -> str:
 
     quote = random.choice(quotes)
 
-    _logger.info(f"Got quote from Marvin (len={len(quote)})")
+    _logger.info("Got quote from Marvin (len=%s)" % (len(quote),))
 
     return quote

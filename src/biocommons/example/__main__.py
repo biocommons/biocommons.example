@@ -1,3 +1,7 @@
+"""myome.example.__main__
+
+"""
+
 import logging
 import time
 
@@ -6,7 +10,9 @@ from . import marvin
 _logger = logging.getLogger(__name__)
 
 
-def main():
+def main():  # pragma: no cover
+    """marvin.example main"""
+
     import coloredlogs
 
     logging.Formatter.converter = time.gmtime
@@ -17,7 +23,7 @@ def main():
     )
 
     quote = marvin.get_quote()
-    _logger.warning(f"Got quote from Marvin (len={len(quote)})")
+    _logger.warning("Got quote from Marvin (len=%s)" % (len(quote),))
 
     print("Marvin says:")
     print(quote)

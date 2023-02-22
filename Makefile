@@ -6,8 +6,9 @@
 .SUFFIXES:
 
 SHELL:=/bin/bash -e -o pipefail
+SELF:=$(firstword $(MAKEFILE_LIST))
 
-PY_VERSION:=3.9
+PY_VERSION:=3.10
 VE_DIR=venv/${PY_VERSION}
 
 TEST_DIRS:=tests
@@ -20,7 +21,7 @@ default: help
 
 #=> help -- display this help message
 help:
-	@sbin/makefile-extract-documentation "$(firstword $(MAKEFILE_LIST))"
+	@sbin/makefile-extract-documentation "${SELF}"
 
 
 ############################################################################
@@ -35,18 +36,20 @@ devready:
 	@echo '#################################################################################'
 
 #=> venv: make a Python 3 virtual environment
+venv: ${VE_DIR}
 ${VE_DIR}: venv/%:
 	python$* -mvenv $@; \
 	source $@/bin/activate; \
 	python -m ensurepip --upgrade; \
 	pip install --upgrade pip setuptools wheel
 
-#=> install: install package
 #=> develop: install package in develop mode
 .PHONY: develop install
 develop:
 	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
 	pip install -e .[dev]
+
+#=> install: install package
 install:
 	pip install .
 
@@ -68,8 +71,8 @@ test:
 	pytest
 test-code:
 	pytest src
-test-docs:
-	pytest docs
+#test-docs:
+#	pytest docs
 
 #=> tox -- run all tox tests
 tox:
@@ -87,11 +90,16 @@ reformat:
 	isort src tests
 	git commit -a -m "reformatted with black and isort"
 
-#=> docs -- make sphinx docs
-.PHONY: docs
-docs: develop
-	# RTD makes json. Build here to ensure that it works.
-	make -C doc html json
+#=> rename: rename files and substitute content for new repo name
+.PHONY: rename
+rename:
+	./sbin/rename-package
+
+# #=> docs -- make sphinx docs
+# .PHONY: docs
+# docs: develop
+# 	# RTD makes json. Build here to ensure that it works.
+# 	make -C doc html json
 
 
 ############################################################################
@@ -100,17 +108,24 @@ docs: develop
 #=> clean: remove temporary and backup files
 .PHONY: clean
 clean:
-	find . \( -name \*~ -o -name \*.bak \) -print0 | xargs -0r rm
+	rm -frv **/*~ **/*.bak
 
 #=> cleaner: remove files and directories that are easily rebuilt
 .PHONY: cleaner
 cleaner: clean
-	rm -fr .cache *.egg-info build dist docs/_build 
-	find . \( -name \*.pyc -o -name \*.orig -o -name \*.rej \) -print0 | xargs -0r rm
-	find . -name __pycache__ -print0 | xargs -0r rm -fr
+	rm -frv .cache build dist docs/_build
+	rm -frv **/__pycache__
+	rm -frv **/*.egg-info
+	rm -frv **/*.pyc
+	rm -frv **/*.orig
+	rm -frv **/*.rej
 
-#=> cleanest: remove files and directories that require more time/network fetches to rebuild
+#=> cleanest: remove files and directories that are more expensive to rebuild
 .PHONY: cleanest
 cleanest: cleaner
-	rm -fr .eggs .tox venv
+	rm -frv .eggs .tox venv
 
+#=> distclean: remove untracked files and other detritus
+.PHONY: distclean
+distclean: cleanest
+	git clean -df

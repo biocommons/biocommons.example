@@ -1,4 +1,4 @@
-from biocommons.example.marvin import get_quote
+from myome.example.marvin import get_quote
 
 
 def test_get_quote():
