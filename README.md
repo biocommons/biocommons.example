@@ -2,20 +2,12 @@
 
 This repo provides a template for biocommons Python packages.  Here's how to use it:
 
-1. Click the [Use this template](https://github.com/biocommons/example/generate) button.
+1. Click the [Use this template](https://github.com/biocommons/example/generate)
+   button. Name the new repo like "biocommons.something".
 1. Clone your repo locally.
 1. In the repo, type `make rename`. The new name will be chosen based on the repo name.
 1. Remove this header.
 1. Commit and push.
-
-## Code Quality Status
-
-| Workflow | Description             | Status                                                                       |
-|----------|-------------------------|------------------------------------------------------------------------------|
-| Pylint   | static code analysis    | ![Pylint](https://github.com/biocommons/example/actions/workflows/pylint.yaml/badge.svg) |
-| Flake8   | style guide enforcement | ![Flake8](https://github.com/biocommons/example/actions/workflows/flake8.yaml/badge.svg) |
-| Bandit   | security checks         | ![Bandit](https://github.com/biocommons/example/actions/workflows/bandit.yaml/badge.svg) |
-| Pytest   | unit testing            | ![Tests](https://github.com/biocommons/example/actions/workflows/pytest.yaml/badge.svg)  |
 
 ## Installation
 
