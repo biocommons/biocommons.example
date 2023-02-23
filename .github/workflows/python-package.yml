@@ -59,7 +59,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: pip
         cache-dependency-path: '**/setup.cfg'
- 
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -71,8 +71,8 @@ jobs:
 
   deploy:
     needs:
-      - cqa
-      - test
+    - cqa
+    - test
     runs-on: ubuntu-latest
 
     steps:
@@ -97,17 +97,8 @@ jobs:
       if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        user: github_cicd_uploader
-        password: ${{ secrets.SHR_PYPI_CICD_UPLOAD_PWD }}
-        repository_url: https://pypi.shr.myome.info/simple
+        password: ${{ secrets.PYPI_API_TOKEN }}
 
-    # - name: Publish package
-    #   env:
-    #     PYPI_USER: github_cicd_uploader
-    #     PYPI_PW: ${{ secrets.SHR_PYPI_CICD_UPLOAD_PWD }}
-    #   if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    #   run: |
-    #     twine upload --repository-url https://pypi.shr.myome.info/simple -u ${PYPI_USER} -p ${PYPI_PW} *
 
 # TODO: refactor into
 # - cqa.yaml
