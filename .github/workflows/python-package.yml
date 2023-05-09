@@ -63,7 +63,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install --use-deprecated=legacy-resolver -e .[dev]
+        pip install --use-deprecated=legacy-resolver -e .[test]
 
     - name: Test with pytest
       run: |
@@ -76,6 +76,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: hello world
+      run: |
+        echo "::group::Environment info"
+        echo github.event_name = ${{ github.event_name }}
+        echo refs = ${{ github.ref }}
+        echo tags = ${{ startsWith(github.ref, 'refs/tags') }}
+        echo "::endgroup::"
+
     - uses: actions/checkout@v3
 
     - name: Set up Python
@@ -98,9 +106,3 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}
-
-
-# TODO: refactor into
-# - cqa.yaml
-# - deploy.yaml, which calls cqa
-# - https://docs.github.com/en/actions/using-workflows/reusing-workflows

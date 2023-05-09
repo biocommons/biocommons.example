@@ -47,7 +47,7 @@ ${VE_DIR}: venv/%:
 .PHONY: develop install
 develop:
 	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
-	pip install -e .[dev]
+	pip install -e .[dev,test]
 
 #=> install: install package
 install:
@@ -78,8 +78,8 @@ test:
 	pytest
 test-code:
 	pytest src
-#test-docs:
-#	pytest docs
+test-docs:
+	pytest docs
 
 #=> tox -- run all tox tests
 tox:
@@ -136,3 +136,19 @@ cleanest: cleaner
 .PHONY: distclean
 distclean: cleanest
 	git clean -df
+
+## <LICENSE>
+## Copyright 2023 Source Code Committers
+## 
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+## 
+##     http://www.apache.org/licenses/LICENSE-2.0
+## 
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+## See the License for the specific language governing permissions and
+## limitations under the License.
+## </LICENSE>
