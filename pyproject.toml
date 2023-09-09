@@ -52,7 +52,7 @@ markers = [
 [tool.coverage.run]
 branch = true
 source = ["biocommons.example"]
-omit = ["*_test.py", "*/tests/*"]
+omit = ["*_test.py", "*/test/*", "*/tests/*"]
 
 
 [tool.coverage.report]
