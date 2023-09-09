@@ -1,6 +1,4 @@
-"""biocommons.example.__main__
-
-"""
+"""biocommons.example.__main__"""
 
 import logging
 import time
