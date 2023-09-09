@@ -23,7 +23,7 @@ def main():  # pragma: no cover
     )
 
     quote = marvin.get_quote()
-    _logger.warning("Got quote from Marvin (len=%s)" % (len(quote),))
+    _logger.warning("Got quote from Marvin (len=%s)", len(quote))
 
     print("Marvin says:")
     print(quote)
