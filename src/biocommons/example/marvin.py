@@ -13,7 +13,7 @@ import yaml
 _logger = logging.getLogger(__name__)
 
 
-quotes_stream = importlib.resources.open_text(__package__, "quotes.yaml")
+quotes_stream = importlib.resources.files(__package__).joinpath("quotes.yaml").read_text()
 quotes = yaml.load(quotes_stream, Loader=yaml.SafeLoader)["quotes"]
 
 
@@ -24,7 +24,6 @@ def is_alive() -> bool:
     True
 
     """
-
     return True
 
 
@@ -35,11 +34,10 @@ def get_quote() -> str:
     "There's only one life-form as intelligent..."
 
     """
-
     _logger.info("Getting quote from Marvin")
 
     quote = random.choice(quotes)
 
-    _logger.info("Got quote from Marvin (len=%s)" % (len(quote),))
+    _logger.info("Got quote from Marvin (len=%s)", len(quote))
 
     return quote
