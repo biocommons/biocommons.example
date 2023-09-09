@@ -24,7 +24,6 @@ def is_alive() -> bool:
     True
 
     """
-
     return True
 
 
@@ -35,7 +34,6 @@ def get_quote() -> str:
     "There's only one life-form as intelligent..."
 
     """
-
     _logger.info("Getting quote from Marvin")
 
     quote = random.choice(quotes)

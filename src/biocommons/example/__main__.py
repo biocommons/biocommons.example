@@ -10,7 +10,6 @@ _logger = logging.getLogger(__name__)
 
 def main():  # pragma: no cover
     """marvin.example main"""
-
     import coloredlogs
 
     logging.Formatter.converter = time.gmtime
