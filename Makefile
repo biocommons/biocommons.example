@@ -5,7 +5,7 @@
 .PRECIOUS:
 .SUFFIXES:
 
-SHELL:=/bin/bash -e -o pipefail -o globstar
+SHELL:=/bin/bash -e -o pipefail -O globstar
 SELF:=$(firstword $(MAKEFILE_LIST))
 
 TEST_DIRS:=tests
