@@ -13,7 +13,7 @@ import yaml
 _logger = logging.getLogger(__name__)
 
 
-quotes_stream = importlib.resources.open_text(__package__, "quotes.yaml")
+quotes_stream = importlib.resources.files(__package__).joinpath("quotes.yaml").read_text()
 quotes = yaml.load(quotes_stream, Loader=yaml.SafeLoader)["quotes"]
 
 
