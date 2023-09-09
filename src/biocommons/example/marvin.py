@@ -40,6 +40,6 @@ def get_quote() -> str:
 
     quote = random.choice(quotes)
 
-    _logger.info("Got quote from Marvin (len=%s)" % (len(quote),))
+    _logger.info("Got quote from Marvin (len=%s)", len(quote))
 
     return quote
