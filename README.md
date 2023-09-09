@@ -68,10 +68,3 @@ Try it:
 
 * Quality tools: Code reformatting with black and isort
 * GitHub Actions for testing and packaging
-
-# To Do
-
-* Docs (mkdocs w/mkdocstrings or sphinx)
-* Dockerfile
-* test only certain tags
-* fixture example

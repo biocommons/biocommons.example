@@ -5,11 +5,8 @@
 .PRECIOUS:
 .SUFFIXES:
 
-SHELL:=/bin/bash -e -o pipefail
+SHELL:=/bin/bash -e -o pipefail -o globstar
 SELF:=$(firstword $(MAKEFILE_LIST))
-
-PY_VERSION:=3.10
-VE_DIR=venv/${PY_VERSION}
 
 TEST_DIRS:=tests
 DOC_TESTS:=src ./README.md
@@ -30,26 +27,26 @@ help:
 #=> devready: create venv, install prerequisites, install pkg in develop mode
 .PHONY: devready
 devready:
-	make ${VE_DIR} && source ${VE_DIR}/bin/activate && make develop
+	make venv && source venv/bin/activate && make develop
 	@echo '#################################################################################'
-	@echo '###  Do not forget to `source ${VE_DIR}/bin/activate` to use this environment  ###'
+	@echo '###    Do not forget to `source venv/bin/activate` to use this environment    ###'
 	@echo '#################################################################################'
 
 #=> venv: make a Python 3 virtual environment
-venv: ${VE_DIR}
-${VE_DIR}: venv/%:
-	python$* -mvenv $@; \
+.PHONY: venv
+venv:
+	python3 -mvenv $@; \
 	source $@/bin/activate; \
 	python -m ensurepip --upgrade; \
 	pip install --upgrade pip setuptools wheel
 
 #=> develop: install package in develop mode
-.PHONY: develop install
+.PHONY: develop
 develop:
-	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
-	pip install -e .[dev,test]
+	pip install -e .[dev]
 
 #=> install: install package
+.PHONY: install
 install:
 	pip install .
 
@@ -76,10 +73,12 @@ cqa:
 .PHONY: test test-code test-docs
 test:
 	pytest
-test-code:
-	pytest src
 test-docs:
 	pytest docs
+test-code:
+	pytest src
+test-%:
+	pytest -m '$*' src
 
 #=> tox -- run all tox tests
 tox:
@@ -102,12 +101,11 @@ reformat:
 rename:
 	./sbin/rename-package
 
-# #=> docs -- make sphinx docs
-# .PHONY: docs
-# docs: develop
-# 	# RTD makes json. Build here to ensure that it works.
-# 	make -C doc html json
-
+#=> docs -- make sphinx docs
+.PHONY: docs
+docs: develop
+	# RTD makes json. Build here to ensure that it works.
+	make -C doc html json
 
 ############################################################################
 #= CLEANUP
@@ -127,10 +125,10 @@ cleaner: clean
 	rm -frv **/*.orig
 	rm -frv **/*.rej
 
-#=> cleanest: remove files and directories that are more expensive to rebuild
+#=> cleanest: remove files and directories that require more time/network fetches to rebuild
 .PHONY: cleanest
 cleanest: cleaner
-	rm -frv .eggs .tox venv
+	rm -fr .eggs .tox venv
 
 #=> distclean: remove untracked files and other detritus
 .PHONY: distclean
