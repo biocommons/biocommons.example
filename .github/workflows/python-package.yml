@@ -69,13 +69,14 @@ jobs:
       run: |
         make test
 
-    - name: Report test-coverage to DeepSource
-      run: |
-        # Install the CLI
-        curl https://deepsource.io/cli | sh
+    # #2: I get DEEPSOURCE_DSN not set (or) is empty despite seting. Giving up for now.
+    # - name: Report test-coverage to DeepSource
+    #   run: |
+    #     # Install the CLI
+    #     curl https://deepsource.io/cli | sh
   
-        # Send the report to DeepSource
-        ./bin/deepsource report --analyzer test-coverage --key python --value-file .coverage
+    #     # Send the report to DeepSource
+    #     ./bin/deepsource report --analyzer test-coverage --key python --value-file .coverage
 
   deploy:
     needs:
@@ -84,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: hello world
+    - name: Environment
       run: |
         echo "::group::Environment info"
         echo github.event_name = ${{ github.event_name }}
