@@ -6,20 +6,20 @@ authors = [
 description = "Example Package"
 readme = "README.md"
 license = { file="LICENSE.txt" }
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 dynamic = ["version"]
 
 [project.urls]
-"Homepage" = "https://github.com/biocommons/example"
-"Bug Tracker" = "https://github.com/biocommons/exmaple/issues"
+"Homepage" = "https://github.com/biocommons/biocommons.example"
+"Bug Tracker" = "https://github.com/biocommons/biocommons.example/issues"
 
 
 [build-system]
@@ -74,7 +74,7 @@ exclude_lines = [
 ]
 
 [tool.black]
-line-length = 120
+line-length = 100
 
 
 # [tool.flake8]
@@ -87,4 +87,4 @@ disable = "R0913"
 
 
 [tool.pylint.format]
-max-line-length = "120"
+max-line-length = 100
