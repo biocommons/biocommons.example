@@ -24,6 +24,11 @@ Code reformatting:
 
     make reformat
 
+Install pre-commit hook:
+
+    # included in `make devready`, not necessary for new installations
+    pre-commit install
+
 Test:
 
     make test   # for current environment
