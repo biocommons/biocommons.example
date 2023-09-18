@@ -3,6 +3,7 @@
 from ..marvin import get_quote
 
 
-def test_get_quote():
+def test_get_quote(all_quotes):
     """test get_quote"""
-    assert get_quote() is not None
+    # NB: all_quotes argument is a test fixture; see ./conftest.py
+    assert get_quote() in all_quotes
