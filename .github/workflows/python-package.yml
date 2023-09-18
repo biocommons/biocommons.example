@@ -70,7 +70,7 @@ jobs:
         make test
 
     - name: Upload coverage data to Codecov
-      with:
+      env:
         # =============
         # PLEASE NOTE:
         # Codecov.io tokens are repo-specific
