@@ -76,6 +76,10 @@ exclude_lines = [
 [tool.black]
 line-length = 100
 
+[tool.isort]
+profile = "black"
+src_paths = ["src"]
+
 
 # [tool.flake8]
 # flake8 does not support configuration in pyproject.toml
