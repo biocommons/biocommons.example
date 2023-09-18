@@ -8,6 +8,8 @@
 SHELL:=/bin/bash -e -o pipefail -O globstar
 SELF:=$(firstword $(MAKEFILE_LIST))
 
+VE_DIR=venv
+
 TEST_DIRS:=tests
 DOC_TESTS:=src ./README.md
 
@@ -27,17 +29,16 @@ help:
 #=> devready: create venv, install prerequisites, install pkg in develop mode
 .PHONY: devready
 devready:
-	make venv && source venv/bin/activate && make develop
+	make ${VE_DIR} && source ${VE_DIR}/bin/activate && make develop
 	@echo '#################################################################################'
-	@echo '###    Do not forget to `source venv/bin/activate` to use this environment    ###'
+	@echo '###  Do not forget to `source ${VE_DIR}/bin/activate` to use this environment  ###'
 	@echo '#################################################################################'
 
 #=> venv: make a Python 3 virtual environment
-.PHONY: venv
-venv:
+${VE_DIR}:
 	python3 -mvenv $@; \
 	source $@/bin/activate; \
-	python -m ensurepip --upgrade; \
+	python3 -m ensurepip --upgrade; \
 	pip install --upgrade pip setuptools wheel
 
 #=> develop: install package in develop mode
@@ -129,7 +130,7 @@ cleaner: clean
 #=> cleanest: remove files and directories that require more time/network fetches to rebuild
 .PHONY: cleanest
 cleanest: cleaner
-	rm -fr .eggs .tox venv
+	rm -frv .eggs .tox venv
 
 #=> distclean: remove untracked files and other detritus
 .PHONY: distclean
