@@ -68,6 +68,19 @@ jobs:
     - name: Test with pytest
       run: |
         make test
+
+    - name: Upload coverage data to Codecov
+      run: |
+        # Verify integrity of codecov download
+        curl https://uploader.codecov.io/verification.gpg | gpg --no-default-keyring --keyring trustedkeys.gpg --import
+        curl -Os https://uploader.codecov.io/latest/linux/codecov
+        curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+        curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
+        gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+        shasum -a 256 -c codecov.SHA256SUM
+        # Upload coverage report
+        chmod +x codecov
+        ./codecov        
         
   deploy:
     needs:

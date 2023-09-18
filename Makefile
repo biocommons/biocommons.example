@@ -74,7 +74,7 @@ cqa:
 #=> test-docs: test example code in docs
 .PHONY: test test-code test-docs
 test:
-	pytest
+	pytest --cov src
 test-docs:
 	pytest docs
 test-code:
