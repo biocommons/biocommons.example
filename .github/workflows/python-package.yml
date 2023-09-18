@@ -45,15 +45,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    with:
-      # =============
-      # PLEASE NOTE:
-      # Codecov.io tokens are repo-specific
-      # =============
-      # This token is specific to the biocommons/example repo
-      # Repos deriving from this one must provision & use their own token
-      codecov_token: "abc-123"
-
     strategy:
       fail-fast: false
       matrix:
@@ -79,6 +70,14 @@ jobs:
         make test
 
     - name: Upload coverage data to Codecov
+      with:
+        # =============
+        # PLEASE NOTE:
+        # Codecov.io tokens are repo-specific
+        # =============
+        # This token is specific to the biocommons/example repo
+        # Repos deriving from this one must provision & use their own token
+        codecov_token: "abc-123"
       run: |
         # Verify integrity of codecov download
         curl https://uploader.codecov.io/verification.gpg | gpg --no-default-keyring --keyring trustedkeys.gpg --import
