@@ -70,14 +70,6 @@ jobs:
         make test
 
     - name: Upload coverage data to Codecov
-      env:
-        # =============
-        # PLEASE NOTE:
-        # Codecov.io tokens are repo-specific
-        # =============
-        # This token is specific to the biocommons/example repo
-        # Repos deriving from this one must provision & use their own token
-        codecov_token: "b1d601fb-149c-4524-9424-ccc468f4390f"
       run: |
         # Verify integrity of codecov download
         curl https://uploader.codecov.io/verification.gpg | gpg --no-default-keyring --keyring trustedkeys.gpg --import
