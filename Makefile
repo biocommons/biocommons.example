@@ -5,7 +5,7 @@
 .PRECIOUS:
 .SUFFIXES:
 
-SHELL:=/bin/bash -e -o pipefail -O globstar
+SHELL:=/bin/bash -e -o pipefail #-O globstar
 SELF:=$(firstword $(MAKEFILE_LIST))
 
 VE_DIR=venv
@@ -45,6 +45,7 @@ ${VE_DIR}:
 .PHONY: develop
 develop:
 	pip install -e .[dev]
+	pre-commit install
 
 #=> install: install package
 .PHONY: install
