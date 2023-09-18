@@ -1,5 +1,7 @@
 # biocommons.example Test Package
 
+[![codecov](https://codecov.io/gh/biocommons/biocommons.example/graph/badge.svg?token=CCUMQQV5R6)](https://codecov.io/gh/biocommons/biocommons.example)
+
 This repo provides a template for biocommons Python packages.  Here's how to use it:
 
 1. Click the [Use this template](https://github.com/biocommons/example/generate)
