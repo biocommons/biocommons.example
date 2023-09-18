@@ -76,7 +76,7 @@ exclude_lines = [
 [tool.black]
 line-length = 100
 
-[isort]
+[tool.isort]
 profile = "black"
 src_paths = ["src"]
 
