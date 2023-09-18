@@ -44,6 +44,7 @@ venv:
 .PHONY: develop
 develop:
 	pip install -e .[dev]
+	pre-commit install
 
 #=> install: install package
 .PHONY: install
