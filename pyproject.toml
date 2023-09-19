@@ -16,6 +16,34 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dynamic = ["version"]
+dependencies = [
+	"coloredlogs ~= 15.0",
+	"pyyaml ~= 6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+	"bandit ~= 1.7",
+	"black ~= 22.3",
+	"build ~= 0.8",
+	"flake8 ~= 4.0",
+	"ipython ~= 8.4",
+	"isort ~= 5.10",
+	"mypy",
+	"pre-commit ~= 3.4",
+	"pylint ~= 2.14",
+	"pytest-cov ~= 4.1",
+	"pytest-optional-tests",
+	"pytest ~= 7.1",
+	"tox ~= 3.25",
+	"vcrpy",
+]
+docs = [
+	"mkdocs",
+]
+
+[project.scripts]
+marvin-quote = "biocommons.example.__main__:main"
 
 [project.urls]
 "Homepage" = "https://github.com/biocommons/biocommons.example"
@@ -28,6 +56,27 @@ requires = [
    	 "setuptools_scm[toml] ~= 7.0"
 	 ]
 build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = [
+	"src",
+]
+exclude = [
+	"__pycache__",
+	"*.pyc",
+]
+namespaces = true
+
+[tool.setuptools.package-data]
+"*" = [
+	"*.gz",
+	"*.json",
+	"*.yaml",
+]
 
 
 [tool.setuptools_scm]
