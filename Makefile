@@ -62,14 +62,6 @@ build: %:
 #= TESTING
 # see test configuration in setup.cfg
 
-#=> cqa: execute code quality tests
-cqa:
-	flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics
-	pyright
-	isort --profile black --check src
-	black --check src
-	bandit -ll -r src
-
 #=> test: execute tests
 #=> test-code: test code (including embedded doctests)
 #=> test-docs: test example code in docs
@@ -87,14 +79,21 @@ test-%:
 tox:
 	tox
 
+#=> cqa: execute code quality tests
+cqa:
+	flake8 src --show-source --statistics
+	pyright
+	isort --check src --profile black
+	black --check src
+	bandit -ll -r src
 
-############################################################################
-#= UTILITY TARGETS
-
-#=> reformat: reformat code with yapf and commit
+#=> reformat: reformat code
 .PHONY: reformat
 reformat:
 	pre-commit
+
+############################################################################
+#= UTILITY TARGETS
 
 #=> rename: rename files and substitute content for new repo name
 .PHONY: rename
