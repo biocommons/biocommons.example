@@ -22,5 +22,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           yaml-file: .github/labels.yml
           exclude: |
-            help*
-            *issue
+            stale
