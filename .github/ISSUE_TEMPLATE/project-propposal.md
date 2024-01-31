@@ -9,11 +9,13 @@ assignees: ''
 
 ### Summary
 
-1-3 sentence summary of project
+1-3 sentence summary of project.
 
-## Potential Mentors
+See <a href="#background">Background</a>.
 
-- @reece
+## Value
+
+Why is this project meaningful?
 
 ## Required and Desired Skills
 
@@ -25,5 +27,8 @@ assignees: ''
 - **Headline**. Description...
 - **Headline**. Description...
 
-## Background and Additional Information
+## Potential Mentors
 
+- @reece
+
+## Background
