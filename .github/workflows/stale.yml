@@ -8,4 +8,4 @@ on:
 
 jobs:
   stale:
-    uses: biocmmons/actions/.github/workflows/stale.yml@main
+    uses: biocommons/actions/.github/workflows/stale.yml@main
