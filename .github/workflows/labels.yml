@@ -27,4 +27,4 @@ jobs:
             https://raw.githubusercontent.com/biocommons/.github/main/etc/labels.yml
             .github/labels.yml
 
-          delete-other-labels: false
+          # delete-other-labels: false
