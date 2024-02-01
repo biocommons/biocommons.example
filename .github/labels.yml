@@ -1,3 +1,5 @@
 # file must contain an array, which may be empty
 
-[]
+- name: flubber
+  description: a test
+  color: '#012345'
