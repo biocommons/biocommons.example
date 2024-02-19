@@ -36,6 +36,7 @@ dev = [
 	"pytest-optional-tests",
 	"pytest ~= 7.1",
 	"pyright~=1.1",
+	"ruff",
 	"tox ~= 3.25",
 	"vcrpy",
 ]
@@ -141,3 +142,6 @@ disable = "R0913"
 
 [tool.pylint.format]
 max-line-length = 100
+
+[tool.ruff]
+line-length = 100
