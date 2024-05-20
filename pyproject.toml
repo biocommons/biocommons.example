@@ -23,7 +23,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-	# "bandit ~= 1.7",
 	"build ~= 0.8",
 	"ipython ~= 8.4",
 	"mypy-extensions ~= 1.0",
