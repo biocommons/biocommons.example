@@ -169,7 +169,7 @@ fixable = [
     "PIE",
     "PT",
     "RSE",
-    "RET"
+    "RET",
     "SIM",
     "PERF",
     "FURB",
