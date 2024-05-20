@@ -154,7 +154,6 @@ select = [
     "PL",
     "TRY",
     "PERF",
-    "FURB",
     "RUF",
 ]
 fixable = [
@@ -172,7 +171,6 @@ fixable = [
     "RET",
     "SIM",
     "PERF",
-    "FURB",
     "RUF",
 ]
 ignore = [
