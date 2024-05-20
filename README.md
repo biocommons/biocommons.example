@@ -46,11 +46,11 @@ Try it:
     $ python3 -m biocommons.example
     Marvin says:
     There's only one life-form as intelligent as me within thirty parsecs...
-           
-    $ marvin-quote 
+
+    $ marvin-quote
     Marvin says:
     You think you've got problems? What are you supposed to do if you...
-    
+
     $ ipython
     >>> from biocommons.example import __version__, get_quote_from_marvin
     >>> __version__
@@ -73,5 +73,5 @@ Try it:
 
 ## DevOps
 
-* Quality tools: Code reformatting with black and isort
+* Quality tools: Code linting and reformatting with Ruff
 * GitHub Actions for testing and packaging
