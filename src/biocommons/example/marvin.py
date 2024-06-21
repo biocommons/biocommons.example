@@ -36,7 +36,7 @@ def get_quote() -> str:
     """
     _logger.info("Getting quote from Marvin")
 
-    quote = random.choice(quotes)
+    quote = random.choice(quotes)  # noqa: S311
 
     _logger.info("Got quote from Marvin (len=%s)", len(quote))
 
