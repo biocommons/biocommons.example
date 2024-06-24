@@ -36,6 +36,7 @@ devready:
 
 #=> venv: make a Python 3 virtual environment
 ${VE_DIR}:
+	python3 --version
 	python3 -mvenv $@; \
 	source $@/bin/activate; \
 	python3 -m ensurepip --upgrade; \
