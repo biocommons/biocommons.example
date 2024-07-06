@@ -5,7 +5,13 @@
 .PRECIOUS:
 .SUFFIXES:
 
-SHELL:=/bin/bash -e -o pipefail #-O globstar
+HAVE_ZSH := $(shell command -v zsh >/dev/null 2>&1 && echo "yes" || echo "no")
+
+ifeq ("","$(shell command -v zsh)")
+$(error "zsh not found; you must install zsh first")
+endif
+
+SHELL:=zsh -eu -o pipefail -o null_glob
 SELF:=$(firstword $(MAKEFILE_LIST))
 
 VE_DIR=venv
@@ -44,7 +50,7 @@ ${VE_DIR}:
 #=> develop: install package in develop mode
 .PHONY: develop
 develop:
-	pip install -e .[dev]
+	pip install -e ".[dev]"
 	pre-commit install
 
 #=> install: install package
