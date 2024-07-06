@@ -34,7 +34,7 @@ Install pre-commit hook:
 Test:
 
     make test   # for current environment
-    make tox    # for Python 3.9 and Python 3.10
+    make tox    # for Python 3.10, Python 3.11, Python 3.12
 
 Build:
 
