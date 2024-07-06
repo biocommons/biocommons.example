@@ -5,8 +5,6 @@
 .PRECIOUS:
 .SUFFIXES:
 
-HAVE_ZSH := $(shell command -v zsh >/dev/null 2>&1 && echo "yes" || echo "no")
-
 ifeq ("","$(shell command -v zsh)")
 $(error "zsh not found; you must install zsh first")
 endif
