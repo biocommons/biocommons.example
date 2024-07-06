@@ -54,7 +54,7 @@ develop:
 #=> install: install package
 .PHONY: install
 install:
-	pip install .
+	pip install "."
 
 #=> build: make sdist and wheel
 .PHONY: build
