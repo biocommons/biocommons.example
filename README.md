@@ -17,6 +17,8 @@ To install from pypi: ```pip install biocommons.example```
 
 ## Developer Setup
 
+Developers must install zsh, which is required by the Makefile. zsh is included by default in MacOS, and is readily available on all modern Linux distributions.
+
 Setup like this:
 
     make devready
@@ -34,7 +36,7 @@ Install pre-commit hook:
 Test:
 
     make test   # for current environment
-    make tox    # for Python 3.10, Python 3.11, Python 3.12
+    make tox    # for all supported versions
 
 Build:
 
