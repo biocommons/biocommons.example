@@ -32,7 +32,7 @@ dev = [
 	"pytest ~= 7.1",
 	"pyright~=1.1",
 	"ruff == 0.4.4",
-	"tox ~= 3.25",
+	"tox ~= 4.15",
 	"vcrpy",
 ]
 docs = [
@@ -49,8 +49,8 @@ marvin-quote = "biocommons.example.__main__:main"
 
 [build-system]
 requires = [
-	 "setuptools >= 65.3",
-   	 "setuptools_scm[toml] ~= 7.0"
+	 "setuptools >= 70.1",
+   	 "setuptools_scm[toml] ~= 8.1"
 	 ]
 build-backend = "setuptools.build_meta"
 
