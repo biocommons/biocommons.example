@@ -4,7 +4,9 @@ name: Python package
 on:
   push:
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+'                   # release
+      - '[0-9]+.[0-9]+.[0-9]+(a|b|rc)[0-9]+'     # no dot before alpha, beta, or rc releases
+      - '[0-9]+.[0-9]+.[0-9]+\.(dev|post)[0-9]+' # dot before dev or post (not semver compliant)
   pull_request:
 
 jobs:
