@@ -27,13 +27,15 @@ dev = [
 	"ipython ~= 8.4",
 	"mypy-extensions ~= 1.0",
 	"pre-commit ~= 3.4",
-	"pytest-cov ~= 4.1",
-	"pytest-optional-tests",
-	"pytest ~= 7.1",
 	"pyright~=1.1",
 	"ruff == 0.4.4",
 	"tox ~= 4.15",
-	"vcrpy",
+]
+tests = [
+    "pytest-cov ~= 4.1",
+    "pytest-optional-tests",
+    "pytest ~= 7.1",
+    "vcrpy",
 ]
 docs = [
 	"mkdocs",

@@ -49,7 +49,7 @@ ${VE_DIR}:
 #=> develop: install package in develop mode
 .PHONY: develop
 develop:
-	pip install -e ".[dev]"
+	pip install -e ".[dev,tests]"
 	pre-commit install
 
 #=> install: install package
