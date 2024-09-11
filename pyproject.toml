@@ -29,13 +29,13 @@ dev = [
 	"pre-commit ~= 3.4",
 	"pyright~=1.1",
 	"ruff == 0.4.4",
-	"tox ~= 4.15",
 ]
 tests = [
     "pytest-cov ~= 4.1",
     "pytest-optional-tests",
     "pytest ~= 7.1",
     "vcrpy",
+    "tox ~= 4.15",
 ]
 docs = [
 	"mkdocs",
