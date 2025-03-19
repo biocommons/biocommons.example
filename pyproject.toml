@@ -1,11 +1,11 @@
 [project]
 name = "biocommons.example"
 authors = [
-  { name="biocommons contributors", email="biocommons-dev@googlegroups.com" },
+    { name = "biocommons contributors", email = "biocommons-dev@googlegroups.com" },
 ]
 description = "Example Package"
 readme = "README.md"
-license = { file="LICENSE.txt" }
+license = { file = "LICENSE.txt" }
 requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -16,19 +16,16 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dynamic = ["version"]
-dependencies = [
-	"coloredlogs ~= 15.0",
-	"pyyaml ~= 6.0",
-]
+dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 
 [project.optional-dependencies]
 dev = [
-	"build ~= 0.8",
-	"ipython ~= 8.4",
-	"mypy-extensions ~= 1.0",
-	"pre-commit ~= 3.4",
-	"pyright~=1.1",
-	"ruff == 0.4.4",
+    "build ~= 0.8",
+    "ipython ~= 8.4",
+    "mypy-extensions ~= 1.0",
+    "pre-commit ~= 3.4",
+    "pyright~=1.1",
+    "ruff == 0.4.4",
 ]
 tests = [
     "pytest-cov ~= 4.1",
@@ -37,9 +34,7 @@ tests = [
     "vcrpy",
     "tox ~= 4.15",
 ]
-docs = [
-	"mkdocs",
-]
+docs = ["mkdocs"]
 
 [project.scripts]
 marvin-quote = "biocommons.example.__main__:main"
@@ -50,10 +45,7 @@ marvin-quote = "biocommons.example.__main__:main"
 
 
 [build-system]
-requires = [
-	 "setuptools >= 70.1",
-   	 "setuptools_scm[toml] ~= 8.1"
-	 ]
+requires = ["setuptools >= 70.1", "setuptools_scm[toml] ~= 8.1"]
 build-backend = "setuptools.build_meta"
 
 
@@ -61,21 +53,12 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-where = [
-	"src",
-]
-exclude = [
-	"__pycache__",
-	"*.pyc",
-]
+where = ["src"]
+exclude = ["__pycache__", "*.pyc"]
 namespaces = true
 
 [tool.setuptools.package-data]
-"*" = [
-	"*.gz",
-	"*.json",
-	"*.yaml",
-]
+"*" = ["*.gz", "*.json", "*.yaml"]
 
 
 [tool.setuptools_scm]
@@ -92,8 +75,8 @@ doctest_optionflags = [
     "NORMALIZE_WHITESPACE",
 ]
 markers = [
-	"network: tests that require network connectivity",
-	"slow: slow tests that should be run infrequently",
+    "network: tests that require network connectivity",
+    "slow: slow tests that should be run infrequently",
 ]
 
 
@@ -130,30 +113,31 @@ line-length = 100
 
 [tool.ruff.lint]
 select = [
-    "F",  # https://docs.astral.sh/ruff/rules/#pyflakes-f
-    "E", "W",  # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
-    "I",  # https://docs.astral.sh/ruff/rules/#isort-i
-    "N",  # https://docs.astral.sh/ruff/rules/#pep8-naming-n
-    "UP",  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "F",    # https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "E",
+    "W",    # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "I",    # https://docs.astral.sh/ruff/rules/#isort-i
+    "N",    # https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    "UP",   # https://docs.astral.sh/ruff/rules/#pyupgrade-up
     "YTT",  # https://docs.astral.sh/ruff/rules/#flake8-2020-ytt
-    "S",  # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
-    "B",  # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
-    "A",  # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
-    "C4",  # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
+    "S",    # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+    "B",    # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+    "A",    # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+    "C4",   # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
     "DTZ",  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
-    "EM",  # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
+    "EM",   # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
     "LOG",  # https://docs.astral.sh/ruff/rules/#flake8-logging-log
-    "G",  # https://docs.astral.sh/ruff/rules/#flake8-logging-format-g
+    "G",    # https://docs.astral.sh/ruff/rules/#flake8-logging-format-g
     "PIE",  # https://docs.astral.sh/ruff/rules/#flake8-pie-pie
-    "PT",  # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
+    "PT",   # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
     "RSE",  # https://docs.astral.sh/ruff/rules/#flake8-raise-rse
     "RET",  # https://docs.astral.sh/ruff/rules/#flake8-return-ret
     "SIM",  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
     "ARG",  # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
     "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
-    "PL",  # https://docs.astral.sh/ruff/rules/#pylint-pl
+    "PL",   # https://docs.astral.sh/ruff/rules/#pylint-pl
     "TRY",  # https://docs.astral.sh/ruff/rules/#tryceratops-try
-    "PERF",  # https://docs.astral.sh/ruff/rules/#perflint-perf
+    "PERF", # https://docs.astral.sh/ruff/rules/#perflint-perf
     "RUF",  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
 ]
 fixable = [
@@ -175,7 +159,11 @@ fixable = [
 ]
 ignore = [
     # ignore for compatibility with formatter
-    "W191", "E111", "E114", "E117", "S321",
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "S321",
     # other
     "PLR0913",
 ]
