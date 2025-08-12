@@ -23,10 +23,9 @@ dev = [
     "build ~= 0.8",
     "ipython ~= 8.4",
     "mypy-extensions ~= 1.0",
-    "pre-commit ~= 3.4",
+    "pre-commit >= 4.2.0",
     "pyright~=1.1",
     "ruff == 0.12.8",
-    "pre-commit>=4.2.0",
 ]
 tests = [
     "pytest-cov ~= 4.1",
@@ -199,6 +198,7 @@ ignore = [
     "E501",
     "W191",
     "S321",
+    "COM812",
     # other
     "ANN002",
     "ANN003",
@@ -206,8 +206,9 @@ ignore = [
     "PLC0206",
     "EM101",
     "D213",
+    "D203",
     "D400",
-    "d415",
+    "D415",
 ]
 
 [tool.ruff.lint.per-file-ignores]
