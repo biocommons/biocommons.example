@@ -1,11 +1,4 @@
 repos:
-- repo: local
-  hooks:
-    -  id: pyright
-       name: pyright
-       entry: pyright
-       language: system
-       types: [python]
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.4.4
   hooks:

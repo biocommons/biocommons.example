@@ -22,9 +22,7 @@ dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 dev = [
     "build ~= 0.8",
     "ipython ~= 8.4",
-    "mypy-extensions ~= 1.0",
     "pre-commit ~= 3.4",
-    "pyright~=1.1",
     "ruff == 0.4.4",
 ]
 tests = [
@@ -103,9 +101,6 @@ exclude_lines = [
     # Don't complain if non-runnable code isn't run:
     "if __name__ == .__main__.:",
 ]
-
-[tool.pyright]
-include = ["src", "tests"]
 
 [tool.ruff]
 src = ["src", "tests"]
