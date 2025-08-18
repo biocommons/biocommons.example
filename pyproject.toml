@@ -22,9 +22,7 @@ dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 dev = [
     "build ~= 0.8",
     "ipython ~= 8.4",
-    "mypy-extensions ~= 1.0",
     "pre-commit >= 4.2.0",
-    "pyright~=1.1",
     "ruff == 0.12.8",
 ]
 tests = [
@@ -103,9 +101,6 @@ exclude_lines = [
     # Don't complain if non-runnable code isn't run:
     "if __name__ == .__main__.:",
 ]
-
-[tool.pyright]
-include = ["src", "tests"]
 
 [tool.ruff]
 src = ["src", "tests"]
@@ -208,6 +203,7 @@ ignore = [
     "D415",
     "TRY003",
     "B019",
+    "PGH003",
 ]
 
 [tool.ruff.lint.per-file-ignores]
