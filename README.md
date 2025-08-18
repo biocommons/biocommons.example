@@ -94,4 +94,3 @@ Try it:
 
 * Quality tools: Code linting and reformatting with Ruff
 * GitHub Actions for testing and packaging
-
