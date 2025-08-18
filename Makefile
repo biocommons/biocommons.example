@@ -40,22 +40,18 @@ devready:
 
 #=> venv: make a Python 3 virtual environment
 ${VE_DIR}:
-	python3 --version
-	python3 -mvenv $@; \
-	source $@/bin/activate; \
-	python3 -m ensurepip --upgrade; \
-	pip install --upgrade pip setuptools wheel
-
+	uv venv $@
+	
 #=> develop: install package in develop mode
 .PHONY: develop
 develop:
-	pip install -e ".[dev,tests]"
+	uv pip install -e ".[dev,tests]"
 	pre-commit install
 
 #=> install: install package
 .PHONY: install
 install:
-	pip install "."
+	uv pip install "."
 
 #=> build: make sdist and wheel
 .PHONY: build

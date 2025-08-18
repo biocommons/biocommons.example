@@ -2,6 +2,8 @@
 
 [![codecov](https://codecov.io/gh/biocommons/biocommons.example/graph/badge.svg?token=CCUMQQV5R6)](https://codecov.io/gh/biocommons/biocommons.example)
 
+---
+
 This repo provides a template for biocommons Python packages.  Here's how to use it:
 
 1. Click the [Use this template](https://github.com/biocommons/example/generate)
@@ -11,27 +13,42 @@ This repo provides a template for biocommons Python packages.  Here's how to use
 1. Remove this header.
 1. Commit and push.
 
+Delete this section in your generated template.
+
+---
+
 ## Installation
 
 To install from pypi: ```pip install biocommons.example```
 
 ## Developer Setup
 
-Developers must install zsh, which is required by the Makefile. zsh is included by default in MacOS, and is readily available on all modern Linux distributions.
+### Prerequisites
 
-Setup like this:
+- [GNU make](https://www.gnu.org/software/make/): Current mechanism for consistent invocation of developer tools.
+  - Mac: [Install brew](https://brew.sh/), then [install make](https://formulae.brew.sh/formula/make)
+  - Ubuntu: `sudo apt install make`
+- [uv](https://docs.astral.sh/uv/): An extremely fast Python package and project manager, written in Rust.
+  - All platforms: See the [uv installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
+- [zsh](https://www.zsh.org/): Shell used by the Makefile
+  - Mac: included by default
+  - Ubuntu: `sudo apt install zsh`
+
+### One-time developer setup
+
+Create a Python virtual environment and install dependencies:
 
     make devready
+
+### Development
+
+Activate your environment:
+
     source venv/bin/activate
 
 Code reformatting:
 
     make reformat
-
-Install pre-commit hook:
-
-    # included in `make devready`, not necessary for new installations
-    pre-commit install
 
 Test:
 
@@ -78,6 +95,3 @@ Try it:
 * Quality tools: Code linting and reformatting with Ruff
 * GitHub Actions for testing and packaging
 
-## ToDo
-
-* Add devcontainer support
