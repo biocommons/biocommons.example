@@ -3,16 +3,18 @@ name = "biocommons.example"
 authors = [
     { name = "biocommons contributors", email = "biocommons-dev@googlegroups.com" },
 ]
-description = "Example Package"
+description = "biocommons.example Package"
 readme = "README.md"
-license = { file = "LICENSE.txt" }
-requires-python = ">=3.10"
+license = "Apache-2.0"
+# license_files = [ "LICENSE.txt" ]
+# requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 dynamic = ["version"]

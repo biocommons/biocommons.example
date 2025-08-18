@@ -57,7 +57,7 @@ install:
 #=> build: make sdist and wheel
 .PHONY: build
 build: %:
-	python -m build
+	uv build
 
 
 ############################################################################
