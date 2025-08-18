@@ -12,7 +12,8 @@ endif
 SHELL:=zsh -eu -o pipefail -o null_glob
 SELF:=$(firstword $(MAKEFILE_LIST))
 
-VE_DIR=venv
+VE_DIR:=venv
+PY_VERSION:=3.13
 
 TEST_DIRS:=tests
 DOC_TESTS:=src ./README.md
@@ -40,7 +41,7 @@ devready:
 
 #=> venv: make a Python 3 virtual environment
 ${VE_DIR}:
-	uv venv $@
+	uv venv --python ${PY_VERSION} $@
 	
 #=> develop: install package in develop mode
 .PHONY: develop
