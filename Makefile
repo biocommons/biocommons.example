@@ -15,8 +15,9 @@ SELF:=$(firstword $(MAKEFILE_LIST))
 VE_DIR:=venv
 PY_VERSION:=3.13
 
+SRC_DIRS:=src
 TEST_DIRS:=tests
-DOC_TESTS:=src ./README.md
+DOC_TESTS:=${SRC_DIRS} # ./README.md
 
 
 ############################################################################
@@ -69,13 +70,15 @@ build: %:
 #=> test-docs: test example code in docs
 .PHONY: test test-code test-docs
 test:
-	pytest --cov src
-test-docs:
-	pytest docs
+	pytest --cov ${SRC_DIRS}
 test-code:
-	pytest src
+	pytest ${TEST_DIRS}
+test-docs:
+	pytest ${DOC_TESTS}
+stest:
+	pytest -vvv -s -k ${t}
 test-%:
-	pytest -m '$*' src
+	pytest -m '$*' ${TEST_DIRS}
 
 #=> tox -- run all tox tests
 tox:
@@ -86,25 +89,20 @@ cqa:
 	ruff format --check
 	ruff check
 
+############################################################################
+#= UTILITY TARGETS
+
 #=> reformat: reformat code
 .PHONY: reformat
 reformat:
 	ruff check --fix
 	ruff format
 
-############################################################################
-#= UTILITY TARGETS
-
-#=> rename: rename files and substitute content for new repo name
-.PHONY: rename
-rename:
-	./sbin/rename-package
-
 #=> docs -- make sphinx docs
 .PHONY: docs
 docs: develop
 	# RTD makes json. Build here to ensure that it works.
-	make -C doc html json
+	make -C docs html json
 
 ############################################################################
 #= CLEANUP
@@ -113,6 +111,8 @@ docs: develop
 .PHONY: clean
 clean:
 	rm -frv **/*~ **/*.bak
+	-make -C docs $@
+	-make -C examples $@
 
 #=> cleaner: remove files and directories that are easily rebuilt
 .PHONY: cleaner
@@ -123,16 +123,30 @@ cleaner: clean
 	rm -frv **/*.pyc
 	rm -frv **/*.orig
 	rm -frv **/*.rej
+	-make -C docs $@
+	-make -C examples $@
 
-#=> cleanest: remove files and directories that require more time/network fetches to rebuild
+#=> cleanest: remove files and directories that are more expensive to rebuild
 .PHONY: cleanest
 cleanest: cleaner
 	rm -frv .eggs .tox venv
+	-make -C docs $@
+	-make -C examples $@
 
 #=> distclean: remove untracked files and other detritus
 .PHONY: distclean
 distclean: cleanest
 	git clean -df
+
+
+############################################################################
+#= Repo renamer
+
+#=> rename: rename files and substitute content for new repo name
+.PHONY: rename
+rename:
+	./sbin/rename-package
+
 
 ## <LICENSE>
 ## Copyright 2023 Source Code Committers
