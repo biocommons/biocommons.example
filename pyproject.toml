@@ -3,31 +3,35 @@ name = "biocommons.example"
 authors = [
     { name = "biocommons contributors", email = "biocommons-dev@googlegroups.com" },
 ]
-description = "Example Package"
+description = "biocommons.example Package"
 readme = "README.md"
-license = { file = "LICENSE.txt" }
-requires-python = ">=3.10"
+license = "Apache-2.0"
+# license_files = [ "LICENSE.txt" ]
+# requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 dynamic = ["version"]
-dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
+dependencies = [
+    "coloredlogs ~= 15.0",
+    "pyyaml ~= 6.0",
+]
 
 [project.optional-dependencies]
 dev = [
     "build ~= 0.8",
     "ipython ~= 8.4",
-    "pre-commit ~= 3.4",
+    "pre-commit>=3.8.0",
     "ruff == 0.4.4",
 ]
 tests = [
     "pytest-cov ~= 4.1",
-    "pytest-optional-tests",
     "pytest ~= 7.1",
     "vcrpy",
     "tox ~= 4.15",
