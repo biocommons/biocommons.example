@@ -105,6 +105,11 @@ exclude_lines = [
 [tool.ruff]
 src = ["src", "tests"]
 line-length = 100
+exclude = [
+    "bin",
+    "sbin",
+    "docs",
+]
 
 [tool.ruff.lint]
 select = [
@@ -143,42 +148,12 @@ select = [
     "PGH",  # https://docs.astral.sh/ruff/rules/#pygrep-hooks-pgh
     "PLC",  # https://docs.astral.sh/ruff/rules/#convention-c
     "PLE",  # https://docs.astral.sh/ruff/rules/#error-e_1
+    "PLR",  # https://docs.astral.sh/ruff/rules/#refactor-plr
     "PLW",  # https://docs.astral.sh/ruff/rules/#warning-plw
     "UP",  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
     "FURB",  # https://docs.astral.sh/ruff/rules/#refurb-furb
     "RUF",  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
     "TRY",  # https://docs.astral.sh/ruff/rules/#tryceratops-try
-]
-fixable = [
-    "ANN",
-    "ASYNC",
-    "B",
-    "C4",
-    "ISC",
-    "ICN",
-    "LOG",
-    "G",
-    "PIE",
-    "PT",
-    "RSE",
-    "RET",
-    "SIM",
-    "TID",
-    "PTH",
-    "I",
-    "N",
-    "PERF",
-    "D",
-    "F401",
-    "F541",
-    "PGH",
-    "PLC",
-    "PLE",
-    "PLW",
-    "UP",
-    "FURB",
-    "RUF",
-    "TRY"
 ]
 ignore = [
     # ignore for compatibility with formatter
@@ -192,17 +167,24 @@ ignore = [
     "W191",
     "S321",
     "COM812",
-    # other
+    # don't require types on *args, **kwargs
     "ANN002",
     "ANN003",
-    "PLR0913",
-    "PLC0206",
-    "D213",
+    # subjective pylint thresholds
+    "PLR0904",
+    "PLR091",
+    "PLR1702",
+    # excessive docstring requirements
+    "D105",
+    "D205",
     "D203",
+    "D213",  # conflicts with D212
     "D400",
+    "D401",
     "D415",
+    # excessive exception message requirements
     "TRY003",
-    "B019",
+    # excessive type ignore requirements
     "PGH003",
 ]
 

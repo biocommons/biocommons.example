@@ -1,1 +1,1 @@
-"""Declare tests internal to src directory"""
+# noqa: D104

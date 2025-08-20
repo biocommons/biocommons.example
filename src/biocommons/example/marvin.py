@@ -18,7 +18,7 @@ quotes = yaml.load(quotes_stream, Loader=yaml.SafeLoader)["quotes"]
 
 
 def is_alive() -> bool:
-    """Test whether Marvin is alive
+    """Tests whether Marvin is alive
 
     >>> is_alive() is True
     True
