@@ -4,5 +4,5 @@ from biocommons.example.marvin import get_quote
 
 
 def test_get_quote() -> None:
-    """Test get_quote"""
+    """test get_quote"""
     assert get_quote() is not None  # noqa: S101

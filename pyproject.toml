@@ -181,6 +181,7 @@ ignore = [
     "D213",  # conflicts with D212
     "D400",
     "D401",
+    "D403",
     "D415",
     # excessive exception message requirements
     "TRY003",
