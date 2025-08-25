@@ -1,0 +1,10 @@
+build-essential
+ca-certificates
+curl
+gcc
+git
+gnupg2
+libpq-dev
+make
+openssl
+zsh
