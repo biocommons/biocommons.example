@@ -179,6 +179,7 @@ ignore = [
 # B011 - assert-false
 # INP001 - implicit-namespace-package
 # SLF001 - private-member-access
+# BLE001 - blind-except
 "tests/*" = [
     "ANN001",
     "ANN2",
@@ -188,6 +189,7 @@ ignore = [
     "B011",
     "INP001",
     "SLF001",
+    "BLE001",
 ]
 
 [tool.ruff.lint.flake8-annotations]
