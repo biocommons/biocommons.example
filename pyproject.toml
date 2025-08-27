@@ -1,11 +1,12 @@
 [project]
 name = "python-package"
-version = "0.0.1"
-description = "Package Description"
-authors = [{ name = "Biocommons Contributors", email = "reecehart@gmail.com" }]
+authors = [
+    { name = "biocommons contributors", email = "biocommons-dev@googlegroups.com" },
+]
+description = "Example Package"
 readme = "README.md"
-keywords = ['python']
-requires-python = ">=3.9,<4.0"
+license = "Apache-2.0"
+requires-python = ">=3.10"
 classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
@@ -17,6 +18,20 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+dynamic = ["version"]
+dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
+
+[project.optional-dependencies]
+tests = [
+    "pytest-cov ~= 4.1",
+    "pytest ~= 7.1",
+    "vcrpy",
+    "tox ~= 4.15",
+]
+docs = ["mkdocs"]
+
+[project.scripts]
+marvin-quote = "biocommons.example.__main__:main"
 
 [project.urls]
 Homepage = "https://biocommons.github.io/python-package/"
@@ -38,8 +53,22 @@ dev = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools >= 70.1", "setuptools_scm[toml] ~= 8.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["__pycache__", "*.pyc"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"*" = ["*.gz", "*.json", "*.yaml"]
+
+
+[tool.setuptools_scm]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/python_package"]
