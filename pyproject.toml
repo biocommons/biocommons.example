@@ -23,10 +23,18 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "build ~= 0.8",
+    "deptry>=0.23.0",
     "ipython ~= 8.4",
+    "mkdocs-material>=8.5.10",
+    "mkdocs>=1.4.2",
+    "mkdocstrings[python]>=0.26.1",
     "pre-commit>=3.8.0",
-    "ruff == 0.4.4",
+    "pytest-cov>=4.0.0",
+    "pytest>=7.2.0",
+    "ruff>=0.11.5",
+    "tox-uv>=1.11.3",
+    "ty>=0.0.1a16",
+
 ]
 tests = [
     "pytest-cov ~= 4.1",

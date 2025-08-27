@@ -12,7 +12,7 @@ endif
 SHELL:=zsh -eu -o pipefail -o null_glob
 SELF:=$(firstword $(MAKEFILE_LIST))
 
-VE_DIR:=venv
+VE_DIR:=.venv
 PY_VERSION:=3.13
 
 SRC_DIRS:=src
@@ -47,13 +47,13 @@ ${VE_DIR}:
 #=> develop: install package in develop mode
 .PHONY: develop
 develop:
-	uv pip install -e ".[dev,tests]"
+	uv sync --extra dev --extra tests
 	pre-commit install
 
 #=> install: install package
 .PHONY: install
 install:
-	uv pip install "."
+	uv sync
 
 #=> build: make sdist and wheel
 .PHONY: build
@@ -82,12 +82,12 @@ test-%:
 
 #=> tox -- run all tox tests
 tox:
-	tox
+	uvx tox
 
 #=> cqa: execute code quality tests
 cqa:
-	ruff format --check
-	ruff check
+	uvx ruff format --check
+	uvx ruff check
 
 ############################################################################
 #= UTILITY TARGETS
@@ -95,8 +95,8 @@ cqa:
 #=> reformat: reformat code
 .PHONY: reformat
 reformat:
-	ruff check --fix
-	ruff format
+	uvx ruff check --fix
+	uvx ruff format
 
 #=> docs -- make sphinx docs
 .PHONY: docs
