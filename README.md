@@ -1,83 +1,74 @@
-# biocommons.example Test Package
+# python-package
 
-[![codecov](https://codecov.io/gh/biocommons/biocommons.example/graph/badge.svg?token=CCUMQQV5R6)](https://codecov.io/gh/biocommons/biocommons.example)
+[![Release](https://img.shields.io/github/v/release/biocommons/python-package)](https://img.shields.io/github/v/release/biocommons/python-package)
+[![Build status](https://img.shields.io/github/actions/workflow/status/biocommons/python-package/main.yml?branch=main)](https://github.com/biocommons/python-package/actions/workflows/main.yml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/biocommons/python-package/branch/main/graph/badge.svg)](https://codecov.io/gh/biocommons/python-package)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/biocommons/python-package)](https://img.shields.io/github/commit-activity/m/biocommons/python-package)
+[![License](https://img.shields.io/github/license/biocommons/python-package)](https://img.shields.io/github/license/biocommons/python-package)
 
-This repo provides a template for biocommons Python packages.  Here's how to use it:
+Package Description
 
-1. Click the [Use this template](https://github.com/biocommons/example/generate)
-   button. Name the new repo like "biocommons.something".
-1. Clone your repo locally.
-1. In the repo, type `make rename`. The new name will be chosen based on the repo name.
-1. Remove this header.
-1. Commit and push.
+- **Github repository**: <https://github.com/biocommons/python-package/>
+- **Documentation** <https://biocommons.github.io/python-package/>
 
-## Installation
+## Getting started with your project
 
-To install from pypi: ```pip install biocommons.example```
+### 1. Create a New Repository
 
-## Developer Setup
+First, create a repository on GitHub with the same name as this project, and then run the following commands:
 
-Developers must install zsh, which is required by the Makefile. zsh is included by default in MacOS, and is readily available on all modern Linux distributions.
+```bash
+git init -b main
+git add .
+git commit -m "init commit"
+git remote add origin git@github.com:biocommons/python-package.git
+git push -u origin main
+```
 
-Setup like this:
+### 2. Set Up Your Development Environment
 
-    make devready
-    source venv/bin/activate
+Then, install the environment and the pre-commit hooks with
 
-Code reformatting:
+```bash
+make install
+```
 
-    make reformat
+This will also generate your `uv.lock` file
 
-Install pre-commit hook:
+### 3. Run the pre-commit hooks
 
-    # included in `make devready`, not necessary for new installations
-    pre-commit install
+Initially, the CI/CD pipeline might be failing due to formatting issues. To resolve those run:
 
-Test:
+```bash
+uv run pre-commit run -a
+```
 
-    make test   # for current environment
-    make tox    # for all supported versions
+### 4. Commit the changes
 
-Build:
+Lastly, commit the changes made by the two steps above to your repository.
 
-    git tag 0.0.0
-    make build
+```bash
+git add .
+git commit -m 'Fix formatting issues'
+git push origin main
+```
 
-Try it:
+You are now ready to start development on your project!
+The CI/CD pipeline will be triggered when you open a pull request, merge to main, or when you create a new release.
 
-    $ python3 -m biocommons.example
-    Marvin says:
-    There's only one life-form as intelligent as me within thirty parsecs...
+To finalize the set-up for publishing to PyPI, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/publishing/#set-up-for-pypi).
+For activating the automatic documentation with MkDocs, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/mkdocs/#enabling-the-documentation-on-github).
+To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/codecov/).
 
-    $ marvin-quote
-    Marvin says:
-    You think you've got problems? What are you supposed to do if you...
+## Releasing a new version
 
-    $ ipython
-    >>> from biocommons.example import __version__, get_quote_from_marvin
-    >>> __version__
-    '0.1.dev8+gd5519a8.d20211123'
-    >>> get_quote()
-    "The first ten million years were the worst, ...
+- Create an API Token on [PyPI](https://pypi.org/).
+- Add the API Token to your projects secrets with the name `PYPI_TOKEN` by visiting [this page](https://github.com/biocommons/python-package/settings/secrets/actions/new).
+- Create a [new release](https://github.com/biocommons/python-package/releases/new) on Github.
+- Create a new tag in the form `*.*.*`.
 
+For more details, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/cicd/#how-to-trigger-a-release).
 
-# Features
+---
 
-## Code structure and features
-
-* Modern pyproject.toml with setuptools
-* Versioning based on git tag (only)
-* Easy development setup
-* Support for namespaces
-* Testing with coverage using pytest; tests may be in `tests/`, embedded in the package, and in doc strings
-* Examples for logging and package data
-* Command-line with argument parsing with argparse
-
-## DevOps
-
-* Quality tools: Code linting and reformatting with Ruff
-* GitHub Actions for testing and packaging
-
-## ToDo
-
-* Add devcontainer support
+Repository initiated with [fpgmaas/cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv).
