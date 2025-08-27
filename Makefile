@@ -65,7 +65,7 @@ build: %:
 
 ############################################################################
 #= TESTING
-# see test configuration in setup.cfg
+# see test configuration in pyproject.toml
 
 #=> test: execute tests
 #=> test-code: test code (including embedded doctests)
@@ -126,6 +126,7 @@ cleaner: clean
 	rm -frv **/*.pyc
 	rm -frv **/*.orig
 	rm -frv **/*.rej
+	rm -fvr .ruff_cache
 
 #=> cleanest: remove files and directories that require more time/network fetches to rebuild
 .PHONY: cleanest
