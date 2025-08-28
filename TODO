@@ -1,0 +1,9 @@
+- [x] use toml-sort to keep pyproject.toml in a canonical order
+
+- [ ] merge old and new makefiles
+
+- [ ] make github actions/workflows use makefile targets
+
+- [x] mv python ci/cd to biocommons/.github
+
+- [ ] release github actions / update branch spec in .github/workflows

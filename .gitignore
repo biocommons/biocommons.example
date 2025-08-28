@@ -1,143 +1,92 @@
-# Byte-compiled / optimized / DLL files
+__marimo__/
 __pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
+__pypackages__/
+.abstra/
+.cache
 .coverage
 .coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-*.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# package/env management
-.python-version
+.cursorignore
+.cursorindexingignore
+.dmypy.json
+.DS_Store
+.eggs/
 .env
-.venv
-env/
-venv/
-ENV/
-*.bak
-Pipfile.lock
-poetry.lock
-pdm.lock
-.pdm.toml
-.pdm-python
+.envrc
+.hypothesis/
+.installed.cfg
+.ipynb_checkpoints
+.mypy_cache/
+.nox/
 .pdm-build/
-uv.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Spyder project settings
+.pdm-python
+.pixi
+.pybuilder/
+.pypirc
+.pyre/
+.pytest_cache/
+.Python
+.pytype/
+.ropeproject
+.ruff_cache/
+.scrapy
 .spyderproject
 .spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# IDEs
-.idea/
+.tox/
+.venv
 .vscode
-
-# misc
-*.orig
-archive
+.webassets-cache
+*.cover
+*.egg
+*.egg-info/
+*.log
+*.manifest
+*.mo
+*.pot
+*.py.cover
+*.py[codz]
+*.sage.py
+*.so
+*.spec
+*.sqlite3
+*.sqlite3-journal
 *~
-**/.DS_Store
+*$py.class
+/site
+archive
+build/
+celerybeat-schedule
+celerybeat.pid
+cover/
+coverage.xml
+cython_debug/
+develop-eggs/
+dist/
+dmypy.json
+docs/_build/
+docs/source
+downloads/
+eggs/
+env.bak/
+env/
+ENV/
+htmlcov/
+instance/
+ipython_config.py
+lib/
+lib64/
+local_settings.py
+MANIFEST
+marimo/_lsp/
+marimo/_static/
+nosetests.xml
+parts/
+pip-delete-this-directory.txt
+pip-log.txt
+profile_default/
+sdist/
+share/python-wheels/
+target/
+var/
+venv.bak/
+venv/
+wheels/
