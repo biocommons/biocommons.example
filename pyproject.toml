@@ -1,27 +1,29 @@
 [project]
-name = "python-package"
+name = "biocommons-example"
 authors = [
     { name = "biocommons contributors", email = "biocommons-dev@googlegroups.com" },
 ]
-description = "Example Package"
+description = "biocommons.example package (namespaced)"
 readme = "README.md"
-license = "Apache-2.0"
+license = "MIT"
 requires-python = ">=3.10"
 classifiers = [
-    "Intended Audience :: Developers",
-    "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
 ]
 dynamic = ["version"]
 dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 
 [project.optional-dependencies]
+dev = [
+    "build ~= 0.8",
+    "ipython ~= 8.4",
+    "pre-commit ~= 3.4",
+    "ruff == 0.4.4",
+]
 tests = [
     "pytest-cov ~= 4.1",
     "pytest ~= 7.1",
@@ -34,27 +36,14 @@ docs = ["mkdocs"]
 marvin-quote = "biocommons.example.__main__:main"
 
 [project.urls]
-Homepage = "https://biocommons.github.io/python-package/"
-Repository = "https://github.com/biocommons/python-package"
-Documentation = "https://biocommons.github.io/python-package/"
+"Homepage" = "https://github.com/biocommons/biocommons.example"
+"Bug Tracker" = "https://github.com/biocommons/biocommons.example/issues"
 
-[dependency-groups]
-dev = [
-    "pytest>=7.2.0",
-    "pre-commit>=2.20.0",
-    "tox-uv>=1.11.3",
-    "deptry>=0.23.0",
-    "ty>=0.0.1a16",
-    "pytest-cov>=4.0.0",
-    "ruff>=0.11.5",
-    "mkdocs>=1.4.2",
-    "mkdocs-material>=8.5.10",
-    "mkdocstrings[python]>=0.26.1",
-]
 
 [build-system]
 requires = ["setuptools >= 70.1", "setuptools_scm[toml] ~= 8.1"]
 build-backend = "setuptools.build_meta"
+
 
 [tool.setuptools]
 include-package-data = true
@@ -70,70 +59,106 @@ namespaces = true
 
 [tool.setuptools_scm]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/python_package"]
 
-[tool.ty.environment]
-python = "./.venv"
-python-version = "3.9"
-
+# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
+doctest_optionflags = [
+    "ALLOW_BYTES",
+    "ALLOW_UNICODE",
+    "ELLIPSIS",
+    "IGNORE_EXCEPTION_DETAIL",
+    "NORMALIZE_WHITESPACE",
+]
+markers = [
+    "network: tests that require network connectivity",
+    "slow: slow tests that should be run infrequently",
+]
+
+
+[tool.coverage.run]
+branch = true
+omit = ["*_test.py", "*/test/*", "*/tests/*"]
+
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if __name__ == .__main__.:",
+]
 
 [tool.ruff]
-target-version = "py39"
-line-length = 120
-fix = true
+src = ["src", "tests"]
+line-length = 100
 
 [tool.ruff.lint]
 select = [
-    # flake8-2020
-    "YTT",
-    # flake8-bandit
-    "S",
-    # flake8-bugbear
-    "B",
-    # flake8-builtins
-    "A",
-    # flake8-comprehensions
-    "C4",
-    # flake8-debugger
-    "T10",
-    # flake8-simplify
-    "SIM",
-    # isort
+    "F",    # https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "E",
+    "W",    # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "I",    # https://docs.astral.sh/ruff/rules/#isort-i
+    "N",    # https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    "UP",   # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "YTT",  # https://docs.astral.sh/ruff/rules/#flake8-2020-ytt
+    "S",    # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+    "B",    # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+    "A",    # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+    "C4",   # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
+    "DTZ",  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+    "EM",   # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
+    "LOG",  # https://docs.astral.sh/ruff/rules/#flake8-logging-log
+    "G",    # https://docs.astral.sh/ruff/rules/#flake8-logging-format-g
+    "PIE",  # https://docs.astral.sh/ruff/rules/#flake8-pie-pie
+    "PT",   # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
+    "RSE",  # https://docs.astral.sh/ruff/rules/#flake8-raise-rse
+    "RET",  # https://docs.astral.sh/ruff/rules/#flake8-return-ret
+    "SIM",  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+    "ARG",  # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
+    "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+    "PL",   # https://docs.astral.sh/ruff/rules/#pylint-pl
+    "TRY",  # https://docs.astral.sh/ruff/rules/#tryceratops-try
+    "PERF", # https://docs.astral.sh/ruff/rules/#perflint-perf
+    "RUF",  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
+]
+fixable = [
+    "F401",
+    "F541",
     "I",
-    # mccabe
-    "C90",
-    # pycodestyle
-    "E", "W",
-    # pyflakes
-    "F",
-    # pygrep-hooks
-    "PGH",
-    # pyupgrade
+    "D",
     "UP",
-    # ruff
+    "B",
+    "C4",
+    "EM",
+    "PIE",
+    "PT",
+    "RSE",
+    "RET",
+    "SIM",
+    "PERF",
     "RUF",
-    # tryceratops
-    "TRY",
 ]
 ignore = [
-    # LineTooLong
-    "E501",
-    # DoNotAssignLambda
-    "E731",
+    # ignore for compatibility with formatter
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "S321",
+    # other
+    "PLR0913",
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
-
-[tool.ruff.format]
-preview = true
-
-[tool.coverage.report]
-skip_empty = true
-
-[tool.coverage.run]
-branch = true
-source = ["src"]
