@@ -15,7 +15,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: ["src/python_package"]
+          paths: ["src/biocommons/example"]
 theme:
   name: material
   feature:

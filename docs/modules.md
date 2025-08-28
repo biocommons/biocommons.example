@@ -1,1 +1,1 @@
-::: python_package.foo
+::: biocommons.example.marvin
