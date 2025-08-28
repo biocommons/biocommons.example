@@ -1,1 +1,5 @@
 - consider toml-sort to keep pyproject.toml in a canonical order
+
+- make github actions/workflows use makefile targets
+
+- merge makefiles
