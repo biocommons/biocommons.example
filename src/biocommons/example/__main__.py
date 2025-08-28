@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 
 def main():  # pragma: no cover
     """marvin.example main"""
-    import coloredlogs
+    import coloredlogs  # noqa: PLC0415
 
     logging.Formatter.converter = time.gmtime
     coloredlogs.install(
