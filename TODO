@@ -3,3 +3,5 @@
 - make github actions/workflows use makefile targets
 
 - merge makefiles
+
+- mv python ci/cd to biocommons/.github
