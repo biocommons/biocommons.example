@@ -68,6 +68,22 @@ branch = true
 omit = ["*_test.py", "*/test/*", "*/tests/*"]
 source = ["src"]
 
+[tool.deptry.package_module_name_map]
+# map package name to import name
+# Making this explicit suppresses deptry notices
+coloredlogs = "coloredlogs"
+mkdocs = "mkdocs"
+mkdocs-material = "mkdocs_material"
+mkdocstrings = "mkdocstrings"
+mypy = "mypy"
+pre-commit = "pre_commit"
+pytest = "pytest"
+pytest-cov = "pytest_cov"
+pyyaml = "yaml"
+ruff = "ruff"
+tox-uv = "tox_uv"
+ty = "ty"
+
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
 addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
