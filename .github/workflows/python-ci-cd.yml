@@ -4,11 +4,9 @@ permissions:
   id-token: write
 
 on:
-  pull_request:
-    branches: [ "main" ]
   push:
-    tags:
-      - "[0-9]+.[0-9]+.[0-9]+"
+    branches: ["*"]
+    tags: ["*"]
 
 jobs:
   python-ci-cd:
