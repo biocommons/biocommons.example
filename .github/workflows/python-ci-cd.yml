@@ -10,7 +10,7 @@ on:
 
 jobs:
   python-ci-cd:
-    name: python-ci-cd
+    name: Python CI/CD
     permissions:
       contents: write
       id-token: write
