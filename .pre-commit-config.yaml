@@ -30,7 +30,7 @@ repos:
     hooks:
       - id: canonicalize-gitignore
         name: Sort unique .gitignore
-        entry: sort -u -o .gitignore .gitignore
+        entry: sh -c 'LC_ALL=C sort -u -o .gitignore .gitignore'
         language: system
         files: ^\.gitignore$
 
