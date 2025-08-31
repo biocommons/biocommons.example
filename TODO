@@ -7,3 +7,11 @@
 - [x] mv python ci/cd to biocommons/.github
 
 - [ ] release github actions / update branch spec in .github/workflows
+
+- [ ] Add instructions to create a new pypi project
+    - create API token at https://pypi.org/manage/account/
+    - export UV_PUBLISH_TOKEN=pypi-AgEIc...
+    - uv build
+    - uv publish
+
+uvx --from biocommons-example marvin-quote
