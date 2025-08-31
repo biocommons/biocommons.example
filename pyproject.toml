@@ -109,6 +109,10 @@ markers = [
 src = ["src", "tests"]
 line-length = 100
 
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+
 [tool.ruff.lint]
 select = [
   "F", # https://docs.astral.sh/ruff/rules/#pyflakes-f
