@@ -92,7 +92,6 @@ ruff = "ruff"
 tox-uv = "tox_uv"
 ty = "ty"
 
-# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
 addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
 doctest_optionflags = [
