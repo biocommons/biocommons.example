@@ -38,6 +38,6 @@ repos:
     hooks:
       - id: canonicalize-pyproject
         name: Ensure pyproject.toml in canonical order and format
-        entry: uvx toml-sort --in-place pyproject.toml
+        entry: uvx toml-sort --in-place --all pyproject.toml
         language: system
         files: ^pyproject.toml$

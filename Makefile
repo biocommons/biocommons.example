@@ -57,7 +57,7 @@ cqa: ## Run code quality assessments.
 .PHONY: test
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
-	uv run pytest
+	uv run pytest --cov=. --cov-report=xml
 
 ############################################################################
 #= DOCUMENTATION
@@ -83,7 +83,7 @@ clean:  ## Remove temporary and backup files
 .PHONY: cleaner
 cleaner: clean  ## Remove files and directories that are easily rebuilt
 	$(call INFO_MESSAGE, "Remove files and directories that are easily rebuilt")
-	rm -frv .cache .DS_Store .pytest_cache build coverage.xml dist docs/_build site
+	rm -frv .cache .DS_Store .pytest_cache .ruff_cache build coverage.xml dist docs/_build site
 	rm -frv **/*.pyc **/__pycache__ **/*.egg-info
 	rm -frv **/*.orig **/*.rej
 
