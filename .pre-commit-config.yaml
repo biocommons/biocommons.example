@@ -7,9 +7,9 @@ repos:
       - id: check-toml
       - id: check-yaml
       - id: check-json
-        exclude: ^.devcontainer/devcontainer.json
+        exclude: ^.devcontainer/.*devcontainer.json
       - id: pretty-format-json
-        exclude: ^.devcontainer/devcontainer.json
+        exclude: ^.devcontainer/.*devcontainer.json
         args: [--autofix, --no-sort-keys]
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -20,3 +20,19 @@ repos:
       - id: ruff-check
         args: [ --exit-non-zero-on-fix ]
       - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: canonicalize-gitignore
+        name: Sort unique .gitignore
+        entry: sort -u -o .gitignore .gitignore
+        language: system
+        files: ^\.gitignore$
+
+  - repo: local
+    hooks:
+      - id: canonicalize-pyproject
+        name: Ensure pyproject.toml in canonical order and format
+        entry: uvx toml-sort --in-place pyproject.toml
+        language: system
+        files: ^pyproject.toml$

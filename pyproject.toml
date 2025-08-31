@@ -22,6 +22,7 @@ name = "biocommons-example"
 authors = [
   {name = "biocommons contributors", email = "biocommons-dev@googlegroups.com"}
 ]
+dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 description = "biocommons.example package (namespaced)"
 readme = "README.md"
 license = "Apache-2.0"
@@ -33,8 +34,12 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Operating System :: OS Independent"
 ]
-dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 dynamic = ["version"]
+
+[project.optional-dependencies]
+example = [
+  "pyyaml"
+]
 
 [project.scripts]
 marvin-quote = "biocommons.example.__main__:main"
@@ -67,6 +72,8 @@ exclude_lines = [
 branch = true
 omit = ["*_test.py", "*/test/*", "*/tests/*"]
 source = ["src"]
+
+[tool.deptry]
 
 [tool.deptry.package_module_name_map]
 # map package name to import name
