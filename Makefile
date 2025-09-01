@@ -6,11 +6,6 @@
 .DEFAULT_GOAL := help
 default: help
 
-ifeq ("","$(shell command -v zsh)")
-$(error "zsh not found; you must install zsh first")
-endif
-SHELL:=zsh -eu -o pipefail -o null_glob
-
 COLOR_RESET=\033[0m
 COLOR_CYAN_BOLD=\033[1;36m
 define INFO_MESSAGE
@@ -22,8 +17,7 @@ endef
 
 .PHONY: help
 help: ## Display help message
-	@uvx python -c "import re; \
-	[[print(f'✦ \033[36m{m[0]:<20}\033[0m {m[1]}') for m in re.findall(r'^([\sa-zA-Z_-]+):.*?## (.*)$$', open(makefile).read(), re.M)] for makefile in ('$(MAKEFILE_LIST)').strip().split()]" | sort
+	@./sbin/makefile-extract-documentation ${MAKEFILE_LIST}
 
 ############################################################################
 #= SETUP, INSTALLATION, PACKAGING
@@ -41,6 +35,12 @@ build: ## Build package
 	$(call INFO_MESSAGE, "Building package")
 	rm -fr dist
 	uv build
+
+.PHONY: publish
+publish: build ## publish package to PyPI
+	$(call INFO_MESSAGE, "Publishing package")
+	uv publish  # Requires UV_PUBLISH_TOKEN or Trusted Publishing setup
+
 
 ############################################################################
 #= FORMATTING, TESTING, AND CODE QUALITY
@@ -78,14 +78,15 @@ docs-test: ## Test if documentation can be built without warnings or errors
 .PHONY: clean
 clean:  ## Remove temporary and backup files
 	$(call INFO_MESSAGE, "Remove temporary and backup files")
-	rm -frv **/*~ **/*.bak
+	find . \( -name "*~" -o -name "*.bak" \) -exec rm -frv {} +
 
 .PHONY: cleaner
 cleaner: clean  ## Remove files and directories that are easily rebuilt
 	$(call INFO_MESSAGE, "Remove files and directories that are easily rebuilt")
 	rm -frv .cache .DS_Store .pytest_cache .ruff_cache build coverage.xml dist docs/_build site
-	rm -frv **/*.pyc **/__pycache__ **/*.egg-info
-	rm -frv **/*.orig **/*.rej
+	find . \( -name __pycache__ -type d \) -exec rm -frv {} +
+	find . \( -name "*.pyc" -o -name "*.egg-info" \) -exec rm -frv {} +
+	find . \( -name "*.orig" -o -name "*.rej" \) -exec rm -frv {} +
 
 .PHONY: cleanest
 cleanest: cleaner  ## Remove all files that can be rebuilt
