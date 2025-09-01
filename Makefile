@@ -46,7 +46,7 @@ publish: build ## publish package to PyPI
 #= FORMATTING, TESTING, AND CODE QUALITY
 
 .PHONY: cqa
-cqa: ## Run code quality assessments.
+cqa: ## Run code quality assessments
 	$(call INFO_MESSAGE, "Checking lock file consistency")
 	uv lock --locked
 	$(call INFO_MESSAGE, "Linting and reformatting files")
