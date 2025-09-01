@@ -21,7 +21,7 @@ print(f"""🌟🌟 {BOLD}{HEADER_COLOR}{UNDERLINE}biocommons conventional make t
 
 Using these targets promots consistency between local development and ci/cd commands.
 
-usage: make [target ...])""")
+usage: make [target ...]""")
 
 for line in fileinput.input():  # noqa: SIM115
     if m := re.match(r"#= (.+)", line):
