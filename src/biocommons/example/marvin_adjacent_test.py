@@ -3,6 +3,6 @@
 from .marvin import get_quote
 
 
-def test_get_quote():
+def test_get_quote() -> None:
     """test get_quote"""
     assert get_quote() is not None  # noqa: S101

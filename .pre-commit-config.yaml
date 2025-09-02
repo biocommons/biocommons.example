@@ -20,7 +20,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.12.7"
+    rev: "v0.12.11"
     hooks:
       - id: ruff-check
         args: [ --fix, --exit-non-zero-on-fix ]
@@ -41,3 +41,5 @@ repos:
         entry: uvx toml-sort --in-place --all pyproject.toml
         language: system
         files: ^pyproject.toml$
+
+minimum_pre_commit_version: 4.3.0
