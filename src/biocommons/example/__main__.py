@@ -8,7 +8,7 @@ from . import marvin
 _logger = logging.getLogger(__name__)
 
 
-def main():  # pragma: no cover
+def main() -> None:  # pragma: no cover
     """marvin.example main"""
     import coloredlogs  # noqa: PLC0415
 
@@ -22,8 +22,8 @@ def main():  # pragma: no cover
     quote = marvin.get_quote()
     _logger.warning("Got quote from Marvin (len=%s)", len(quote))
 
-    print("Marvin says:")
-    print(quote)
+    print("Marvin says:")  # noqa: T201
+    print(quote)  # noqa: T201
 
 
 if __name__ == "__main__":

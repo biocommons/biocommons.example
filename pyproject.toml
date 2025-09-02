@@ -9,10 +9,10 @@ dev = [
   "mkdocs>=1.6",
   "mkdocstrings[python]>=0.30",
   "mypy>=1.17",
-  "pre-commit>=3.8",
+  "pre-commit>=4.3",
   "pytest-cov>=4.1",
   "pytest>=7.4",
-  "ruff>=0.12",
+  "ruff==0.12.11",
   "tox-uv>=1.28"
 ]
 
@@ -108,75 +108,81 @@ markers = [
 testpaths = ["tests"]
 
 [tool.ruff]
+exclude = [
+  "bin",
+  "docs",
+  "sbin"
+]
 fix = true
 line-length = 100
 src = ["src", "tests"]
-target-version = "py39"
 
 [tool.ruff.format]
 docstring-code-format = true
-preview = true
-quote-style = "double"
 
 [tool.ruff.lint]
-fixable = [
-  "B",
-  "C4",
-  "D",
-  "EM",
-  "F401",
-  "F541",
-  "I",
-  "PERF",
-  "PIE",
-  "PT",
-  "RET",
-  "RSE",
-  "RUF",
-  "SIM",
-  "UP"
-]
 ignore = [
-  "E111",
-  "E114",
-  "E117",
-  "E501",
-  "E731",
-  "PLR0913",
-  "S321",
-  "W191"
+  "AIR",
+  "ANN002",
+  "ANN003",
+  "C90",
+  "COM812", # ignore for compatibility with formatter
+  "CPY",
+  "D105",
+  "D203",
+  "D205",
+  "D206",
+  "D213", # conflicts with D212
+  "D300", # ignore for compatibility with formatter
+  "D400",
+  "D401",
+  "D403",
+  "D415",
+  "DJ",
+  "E111", # ignore for compatibility with formatter
+  "E114", # ignore for compatibility with formatter
+  "E117", # ignore for compatibility with formatter
+  "E501", # ignore for compatibility with formatter
+  "EM",
+  "ERA",
+  "EXE",
+  "FA",
+  "FAST",
+  "FBT",
+  "FIX",
+  "INT",
+  "NPY",
+  "PD",
+  "PGH003",
+  "PLR0904", # subjective pylint threshold
+  "PLR091", # subjective pylint threshold
+  "PLR1702", # subjective pylint threshold
+  "PYI",
+  "RET504",
+  "TC",
+  "TD",
+  "TID",
+  "TRY003",
+  "W191",
+  "YTT"
 ]
-select = [
-  "A", # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
-  "ARG", # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
-  "B", # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
-  "C4", # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
-  "DTZ", # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
-  "E",
-  "EM", # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
-  "F", # https://docs.astral.sh/ruff/rules/#pyflakes-f
-  "G", # https://docs.astral.sh/ruff/rules/#flake8-logging-format-g
-  "I", # https://docs.astral.sh/ruff/rules/#isort-i
-  "LOG", # https://docs.astral.sh/ruff/rules/#flake8-logging-log
-  "N", # https://docs.astral.sh/ruff/rules/#pep8-naming-n
-  "PERF", # https://docs.astral.sh/ruff/rules/#perflint-perf
-  "PIE", # https://docs.astral.sh/ruff/rules/#flake8-pie-pie
-  "PL", # https://docs.astral.sh/ruff/rules/#pylint-pl
-  "PT", # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
-  "PTH", # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
-  "RET", # https://docs.astral.sh/ruff/rules/#flake8-return-ret
-  "RSE", # https://docs.astral.sh/ruff/rules/#flake8-raise-rse
-  "RUF", # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
-  "S", # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
-  "SIM", # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
-  "TRY", # https://docs.astral.sh/ruff/rules/#tryceratops-try
-  "UP", # https://docs.astral.sh/ruff/rules/#pyupgrade-up
-  "W", # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
-  "YTT" # https://docs.astral.sh/ruff/rules/#flake8-2020-ytt
-]
+select = ["ALL"]
+
+[tool.ruff.lint.flake8-annotations]
+mypy-init-return = true
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]
+"tests/*" = [
+  "ANN001",
+  "ANN2",
+  "B011",
+  "BLE001",
+  "D10",
+  "D100",
+  "INP001",
+  "S101",
+  "SLF001"
+]
 
 [tool.setuptools]
 include-package-data = true
