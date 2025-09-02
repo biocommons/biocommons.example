@@ -15,3 +15,5 @@
     - uv publish
 
 uvx --from biocommons-example marvin-quote
+
+- [ ] move installation instructions to docs

@@ -8,7 +8,7 @@
 
 Package Description
 
-This is a [biocommons](https://biocommons.org/) project.
+This project is a product of the [biocommons](https://biocommons.org/) community.
 
 - **Github repository**: <https://github.com/biocommons/python-package/>
 - **Documentation** <https://biocommons.github.io/python-package/>
