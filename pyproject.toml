@@ -5,6 +5,7 @@ requires = ["setuptools >= 70.1", "setuptools_scm[toml] ~= 8.1"]
 [dependency-groups]
 dev = [
   "deptry>=0.23",
+  "mkdocs-awesome-nav>=3.1.2",
   "mkdocs-material>=9.6",
   "mkdocs>=1.6",
   "mkdocstrings[python]>=0.30",
@@ -13,7 +14,8 @@ dev = [
   "pytest-cov>=4.1",
   "pytest>=7.4",
   "ruff>=0.12",
-  "tox-uv>=1.28"
+  "tox-uv>=1.28",
+  "vcrpy"
 ]
 
 [project]
@@ -32,6 +34,13 @@ classifiers = [
 dependencies = ["coloredlogs ~= 15.0", "pyyaml ~= 6.0"]
 description = "biocommons.example package (namespaced)"
 dynamic = ["version"]
+keywords = [
+  "HGVS",
+  "biocommons",
+  "bioinformatics",
+  "genomics",
+  "variation"
+]
 license = "Apache-2.0"
 name = "biocommons-example"
 readme = "README.md"
@@ -55,16 +64,19 @@ Repository = "https://github.com/biocommons/python-package"
 
 [tool.coverage.report]
 exclude_lines = [
-  # Don't complain about missing debug-only code:
-  "def __repr__",
-  # Don't complain if non-runnable code isn't run:
-  "if __name__ == .__main__.:",
-  "if self.debug",
-  # Have to re-enable the standard pragma
-  "pragma: no cover",
-  # Don't complain if tests don't hit defensive assertion code:
-  "raise AssertionError",
-  "raise NotImplementedError"
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if __name__ == .__main__.:",
 ]
 show_missing = true
 skip_empty = true
@@ -182,11 +194,12 @@ select = [
 include-package-data = true
 
 [tool.setuptools.package-data]
-"*" = ["*.gz", "*.json", "*.yaml"]
+# "*" = ["_data/*/*.json.gz"]
+# "*" = ["*.gz", "*.json", "*.yaml"]
 
 [tool.setuptools.packages.find]
 exclude = ["*.pyc", "__pycache__"]
-namespaces = true
+# namespaces = true
 where = ["src"]
 
 [tool.setuptools_scm]

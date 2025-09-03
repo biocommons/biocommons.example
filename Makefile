@@ -1,3 +1,5 @@
+# Makefile for Python project
+
 .DELETE_ON_ERROR:
 .PHONY: FORCE
 .PRECIOUS:
@@ -5,12 +7,6 @@
 
 .DEFAULT_GOAL := help
 default: help
-
-COLOR_RESET=\033[0m
-COLOR_CYAN_BOLD=\033[1;36m
-define INFO_MESSAGE
-	@echo -e "⏩$(COLOR_CYAN_BOLD)$(1)$(COLOR_RESET)"
-endef
 
 ############################################################################
 #= BASIC USAGE
@@ -41,7 +37,6 @@ publish: build ## publish package to PyPI
 	$(call INFO_MESSAGE, "Publishing package")
 	uv publish  # Requires UV_PUBLISH_TOKEN or Trusted Publishing setup
 
-
 ############################################################################
 #= FORMATTING, TESTING, AND CODE QUALITY
 
@@ -50,7 +45,7 @@ cqa: ## Run code quality assessments
 	$(call INFO_MESSAGE, "Checking lock file consistency")
 	uv lock --locked
 	$(call INFO_MESSAGE, "Linting and reformatting files")
-	uv run pre-commit run -a
+	uv run pre-commit run
 	$(call INFO_MESSAGE, "Checking for obsolete dependencies")
 	uv run deptry src
 

@@ -7,15 +7,14 @@ edit_uri: edit/main/docs/
 repo_name: biocommons/python-package
 copyright: Maintained by <a href="https://biocommons.com">biocommons</a>.
 
-nav:
-  - Home: index.md
-  - Modules: modules.md
 plugins:
   - search
+  - awesome-nav
   - mkdocstrings:
       handlers:
         python:
-          paths: ["src/biocommons/example"]
+          options:
+            show_source: false
 theme:
   name: material
   feature:
